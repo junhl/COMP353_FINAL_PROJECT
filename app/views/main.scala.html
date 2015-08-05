@@ -10,6 +10,10 @@
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
     </head>
     <body>
-        @content
+                <a href="@routes.AdminController.index()">ADMIN</a>			
+                <a href="@routes.DoctorController.index()">DOCTOR</a>		
+                <a href="@routes.NurseController.index()">NURSE</a>		
+                <a href="@routes.NurseShiftSupervisorController.index()">NURSESUPERVISOR</a>		
+                <a href="@routes.InternResidentController.index()">INTERNRESIDENT</a>						
     </body>
 </html>

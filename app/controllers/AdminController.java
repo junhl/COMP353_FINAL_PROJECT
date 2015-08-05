@@ -4,10 +4,9 @@ import play.mvc.*;
 
 import views.html.*;
 
-public class Application extends Controller {
-
+public class AdminController extends Controller{
+	
     public static Result index() {
-        return ok(index.render("COMP353 FINAL PROJECT"));
+        return TODO;
     }
-
 }

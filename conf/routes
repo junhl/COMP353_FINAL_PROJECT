@@ -3,7 +3,13 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
+GET     /                           				controllers.Application.index()
+GET     /admin                 			controllers.AdminController.index()
+GET     /doctor                        		controllers.DoctorController.index()
+GET     /nurse                     				controllers.NurseController.index()
+GET     /nurseshiftsupervisor           	controllers.NurseShiftSupervisorController.index()
+GET     /internresident         		controllers.InternResidentController.index()
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
