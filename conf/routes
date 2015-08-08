@@ -3,12 +3,34 @@
 # ~~~~
 
 # Home page
-GET     /                           				controllers.Application.index()
-GET     /admin                 			controllers.AdminController.index()
-GET     /doctor                        		controllers.DoctorController.index()
-GET     /nurse                     				controllers.NurseController.index()
-GET     /nurseshiftsupervisor           	controllers.NurseShiftSupervisorController.index()
-GET     /internresident         		controllers.InternResidentController.index()
+GET     /                           					controllers.Application.index()
+
+
+GET     /admin                 								controllers.AdminController.index()
+GET     /admin/service                 							controllers.AdminController.service_index()
+
+GET		/admin/service								controllers.AdminController.service(id:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+GET		/admin/service/new							controllers.AdminController.create_service()
+POST	/admin/service							controllers.AdminController.save_service()
+GET		/admin/service/:id								controllers.AdminController.edit_service(id:Long)
+POST	/admin/service/:id							controllers.AdminController.update_service(id:Long)
+POST    /admin/service/:id/delete       		controllers.AdminController.delete_service(id:Long)
+
+
+GET     /doctor                        				controllers.DoctorController.index()
+
+
+GET     /nurse                     					controllers.NurseController.index()
+
+
+GET     /nurseshiftsupervisor           			controllers.NurseShiftSupervisorController.index()
+
+
+
+
+
+GET     /internresident         					controllers.InternResidentController.index()
 
 
 # Map static resources from the /public folder to the /assets URL path
