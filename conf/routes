@@ -26,9 +26,6 @@ GET     /doctor                        				controllers.DoctorController.index()
 
 ##################### NURSE SECTION
 
-# NURSE SECTION
-# NURSE SECTION
-# NURSE SECTION
 GET     /nurse                     					controllers.NurseController.index()
 
 
