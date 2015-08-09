@@ -6,6 +6,9 @@
 GET     /                           					controllers.Application.index()
 
 
+
+##################### ADMIN DIRECTOR SECTION
+
 GET     /admin                 								controllers.AdminController.index()
 GET     /admin/service                 							controllers.AdminController.service_index()
 
@@ -17,20 +20,25 @@ GET		/admin/service/:id								controllers.AdminController.edit_service(id:Long)
 POST	/admin/service/:id							controllers.AdminController.update_service(id:Long)
 POST    /admin/service/:id/delete       		controllers.AdminController.delete_service(id:Long)
 
-
+##################### DOCTOR SECTION
 GET     /doctor                        				controllers.DoctorController.index()
 
 
+##################### NURSE SECTION
+
+# NURSE SECTION
+# NURSE SECTION
+# NURSE SECTION
 GET     /nurse                     					controllers.NurseController.index()
 
 
+##################### NURSE SUPERVISOR SECTION
+
 GET     /nurseshiftsupervisor           			controllers.NurseShiftSupervisorController.index()
 
-
-
-
-
+##################### INTERN SECTION
 GET     /internresident         					controllers.InternResidentController.index()
+
 
 
 # Map static resources from the /public folder to the /assets URL path
