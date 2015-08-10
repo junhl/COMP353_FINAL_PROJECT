@@ -8,3 +8,6 @@ insert into service (name,unit_id) values ('test1', 1);
 insert into service (name,unit_id) values ('test2', 1);
 insert into service (name,unit_id) values ('test3', 2);
 insert into service (name,unit_id) values ('test4', 3);
+
+
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('John', 111, 123);

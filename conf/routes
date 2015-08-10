@@ -22,7 +22,15 @@ POST    /admin/service/:id/delete       		controllers.AdminController.delete_ser
 
 ##################### DOCTOR SECTION
 GET     /doctor                        				controllers.DoctorController.index()
+GET     /doctor/patient                 							controllers.DoctorController.patient_index()
 
+GET		/doctor/patient								controllers.DoctorController.patient(id:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+GET		/doctor/patient/new							controllers.DoctorController.create_patient()
+POST	/doctor/patient							controllers.DoctorController.save_patient()
+GET		/doctor/patient/:id								controllers.DoctorController.edit_patient(id:Long)
+POST	/doctor/patient/:id							controllers.DoctorController.update_patient(id:Long)
+POST    /doctor/patient/:id/delete       		controllers.DoctorController.delete_patient(id:Long)
 
 ##################### NURSE SECTION
 

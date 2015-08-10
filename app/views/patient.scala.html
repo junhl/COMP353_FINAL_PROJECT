@@ -1,0 +1,71 @@
+@(currentPage: com.avaje.ebean.Page[Patient], currentSortBy: String, currentOrder: String, currentFilter: String) 
+
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.DoctorController.patient(newPage, sortBy, order, currentFilter)
+    
+}
+
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}">
+       <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+<div>
+@main ("Patient") {    
+
+    <div id="actions">        
+        <a class="btn success" id="add" href="@routes.DoctorController.create_patient()">Add a new patient</a>        
+    </div>
+    
+    @if(currentPage.getTotalRowCount == 0) {
+        
+        <div class="well">
+            <em>Nothing to display</em>
+        </div>
+        
+    } else {
+        
+        <table class="computers zebra-striped">
+        
+            <thead>
+                <tr>
+                    @header("name", "Patient")
+                    @header("medicardID", "MedicareID")
+					@header("hospitalcardID", "HospitalID")
+                </tr>
+            </thead>
+            
+            <tbody>
+                @for(patient <- currentPage.getList) {
+                    <tr>
+                        <td><a href="@routes.DoctorController.edit_patient(patient.id)">@patient.name</a></td>
+                        <td>@patient.medicardID</td>
+						<td>@patient.hospitalcardID</td>
+                    </tr>
+                }
+            </tbody>            
+        </table> 
+    }        
+
+}
+
+</div>
