@@ -1,5 +1,6 @@
 package models;
 import java.util.*;
+
 import javax.persistence.*;
 
 import play.db.ebean.*;
@@ -19,6 +20,7 @@ public class Service extends Model{
 	public String name;	
 
 	@ManyToOne
+	@Constraints.Required
 	public Unit unit;
 	
     public static Finder<Long,Service> find = new Finder<Long,Service>(Long.class, Service.class); 

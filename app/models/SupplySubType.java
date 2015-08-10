@@ -1,32 +1,32 @@
 package models;
 import java.util.*;
+
 import javax.persistence.*;
 
 import play.db.ebean.*;
 import play.data.format.*;
+import play.data.format.Formats.DateTime;
 import play.data.validation.*;
 
 import com.avaje.ebean.*;
 
 @Entity
-public class Patient extends Model{
+public class SupplySubType extends Model{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Long id;
 	
+	@ManyToOne
+	@Constraints.Required
+	public SupplyType supply_type;
+	
 	@Constraints.Required
 	public String name;	
-
-	@Constraints.Required
-	public Long medicardID;	
 	
-	@Constraints.Required
-	public Long hospitalcardID;	
+    public static Finder<Long,SupplySubType> find = new Finder<Long,SupplySubType>(Long.class, SupplySubType.class); 
 	
-    public static Finder<Long,Patient> find = new Finder<Long,Patient>(Long.class, Patient.class); 
-	
-    public static Page<Patient> page(int page, int pageSize, String sortBy, String order, String filter) {
+    public static Page<SupplySubType> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where()
                 .ilike("name", "%" + filter + "%")

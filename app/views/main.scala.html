@@ -10,14 +10,16 @@
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
     </head>
     <body>
-                <a href="@routes.AdminController.index()">ADMIN</a>			
-                <a href="@routes.DoctorController.index()">DOCTOR</a>		
-                <a href="@routes.NurseController.index()">NURSE</a>		
-                <a href="@routes.NurseShiftSupervisorController.index()">NURSESUPERVISOR</a>		
-                <a href="@routes.InternResidentController.index()">INTERNRESIDENT</a>			
-                
+        <header class="topbar">
+            <h1 class="fill">
+                <a href="@routes.Application.index()">
+                    WORK WORK WORK
+                </a>
+            </h1>
+        </header>
+        
         <section id="main">
             @content
-        </section>			
+        </section>
     </body>
 </html>
