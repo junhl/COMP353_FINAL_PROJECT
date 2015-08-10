@@ -3,6 +3,14 @@
 
 # --- !Ups
 
+create table patient (
+  id                        bigint auto_increment not null,
+  name                      varchar(255),
+  medicard_id               bigint,
+  hospitalcard_id           bigint,
+  constraint pk_patient primary key (id))
+;
+
 create table service (
   id                        bigint auto_increment not null,
   name                      varchar(255),
@@ -24,6 +32,8 @@ create index ix_service_unit_1 on service (unit_id);
 # --- !Downs
 
 SET REFERENTIAL_INTEGRITY FALSE;
+
+drop table if exists patient;
 
 drop table if exists service;
 

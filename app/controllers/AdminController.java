@@ -21,7 +21,7 @@ public class AdminController extends Controller{
     }
     
     public static Result service(int page, String sortBy, String order, String filter) {
-        return ok(
+        return ok( //ok is to display
         		service.render(Service.page(page, 10, sortBy, order, filter),sortBy, order, filter)
                 );
     }
