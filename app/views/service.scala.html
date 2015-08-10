@@ -24,13 +24,12 @@
 }
 
 @header(key:String, title:String) = {
-    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}">
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}>
        <a href="@link(0, key)">@title</a>
     </th>
 }
 
-<div>
-@main ("Services") {    
+
 
     <div id="actions">        
         <a class="btn success" id="add" href="@routes.AdminController.create_service()">Add a new service</a>        
@@ -64,6 +63,3 @@
         </table> 
     }        
 
-}
-
-</div>
