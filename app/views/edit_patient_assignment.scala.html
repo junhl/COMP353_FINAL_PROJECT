@@ -1,0 +1,24 @@
+@(id: Long, patient_assignmentForm: Form[PatientAssignment])
+
+@import helper._
+
+
+    
+    <h1>Edit a patient assignment</h1>
+    
+    @form(routes.DoctorController.update_patient_assignment(id)) {
+        
+        <fieldset>
+			@inputText(patient_assignmentForm("employee.id"), '_label -> "EmployeeID")
+			@inputText(patient_assignmentForm("patient_visit.id"), '_label -> "PatientVisitID")
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Finish Edit" class="btn">
+                
+        </div>        
+    }    
+    
+    @form(routes.DoctorController.delete_patient_assignment(id), 'class -> "topRight") {
+        <input type="submit" value="Delete" class="btn danger">
+    } 

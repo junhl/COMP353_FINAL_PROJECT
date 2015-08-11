@@ -34,4 +34,11 @@ public class Patient extends Model{
                 .findPagingList(pageSize)
                 .getPage(page);
     }
+	
+	public static Map<String,String> find_the_id(long id) {
+        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
+		Patient p = Patient.find.byId(id);
+        options.put(p.id.toString(), p.id.toString());     
+        return options;
+    }
 }
