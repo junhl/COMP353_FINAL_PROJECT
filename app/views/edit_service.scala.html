@@ -4,7 +4,7 @@
 
 
     
-    <h1>Add a service</h1>
+    @main("Welcome to Play") {<h1>Add a service</h1>
     
     @form(routes.AdminController.update_service(id)) {
         
@@ -31,3 +31,4 @@
     @form(routes.AdminController.delete_service(id), 'class -> "topRight") {
         <input type="submit" value="Delete" class="btn danger">
     } 
+}

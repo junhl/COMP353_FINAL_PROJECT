@@ -30,7 +30,7 @@
 }
 
 
-    <div id="actions">        
+    @main("Welcome to Play") {<div id="actions">        
         <form action="@link(0, "employeeID")" method="GET">
             <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by employeeID">
             <input type="submit" id="searchsubmit" value="Filter by name" class="btn primary">
@@ -68,4 +68,4 @@
             </tbody>            
         </table> 
     }        
-
+}

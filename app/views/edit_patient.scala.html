@@ -3,8 +3,8 @@
 @import helper._
 
 
-    
-    <h1>Add a patient</h1>
+@main("Welcome to Play") {
+<h1>Add a patient</h1>
     
     @form(routes.DoctorController.update_patient(id)) {
         
@@ -24,3 +24,4 @@
     @form(routes.DoctorController.delete_patient(id), 'class -> "topRight") {
         <input type="submit" value="Delete" class="btn danger">
     } 
+}

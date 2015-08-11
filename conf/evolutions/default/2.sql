@@ -59,13 +59,11 @@ insert into patient (name,medicard_ID,hospitalcard_ID) values ('John', 111, 123)
 insert into service (name,unit_id) values ('test1', 1);
 insert into service (name,unit_id) values ('test2', 1);
 insert into service (name,unit_id) values ('test3', 2);
-<<<<<<< HEAD
 insert into service (name,unit_id) values ('test4', 3);
-=======
 insert into service (name,unit_id) values ('test4', 3);
 
 
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('John Smith', 111, 123);
 
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('Dave James', 111, 124);
->>>>>>> 67cf3b05a5c139b644dfd3d0a0d5869a11bfb126
+

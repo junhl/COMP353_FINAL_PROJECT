@@ -4,7 +4,7 @@
 
 
     
-    <h1>Edit a patient visit</h1>
+    @main("Welcome to Play") {<h1>Edit a patient visit</h1>
     
     @form(routes.DoctorController.update_patient_visit(id)) {
         
@@ -34,3 +34,4 @@
     @form(routes.DoctorController.delete_patient_visit(id), 'class -> "topRight") {
         <input type="submit" value="Delete" class="btn danger">
     } 
+}
