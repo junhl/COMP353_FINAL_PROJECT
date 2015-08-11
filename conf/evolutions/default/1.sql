@@ -33,6 +33,13 @@ create table inventory (
   constraint pk_inventory primary key (id))
 ;
 
+create table login (
+  id                        bigint auto_increment not null,
+  username                  bigint,
+  password                  varchar(255),
+  constraint pk_login primary key (id))
+;
+
 create table operating_room_schedule (
   id                        bigint auto_increment not null,
   name                      varchar(255),
@@ -267,6 +274,8 @@ drop table if exists delivery_service;
 drop table if exists employee;
 
 drop table if exists inventory;
+
+drop table if exists login;
 
 drop table if exists operating_room_schedule;
 

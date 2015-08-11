@@ -1,11 +1,18 @@
-@(message: String)
+@(message: String, employeeForm: Form[Login])
+@import helper._
 
-@main("COMP 353 FINAL") {
+    <h1>LOGIN</h1>
+@main("Welcome to Play") {
 
-                <a href="@routes.AdminController.index()">ADMIN</a>			
-                <a href="@routes.DoctorController.index()">DOCTOR</a>		
-                <a href="@routes.NurseController.index()">NURSE</a>		
-                <a href="@routes.NurseShiftSupervisorController.index()">NURSESUPERVISOR</a>		
-                <a href="@routes.InternResidentController.index()">INTERNRESIDENT</a>		
-
+@form(routes.Application.return_index()) {
+        
+        <fieldset>        
+			@inputText(employeeForm("username"), '_label -> "USERNAME")
+			@inputText(employeeForm("password"), '_label -> "PASSWORD")
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Login" class="btn">
+		</div>        
+    }
 }

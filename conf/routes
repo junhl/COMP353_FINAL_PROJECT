@@ -4,6 +4,7 @@
 
 # Home page
 GET     /                           					controllers.Application.index()
+POST     /                           					controllers.Application.return_index()
 
 
 
