@@ -1,4 +1,4 @@
-@(currentPage: com.avaje.ebean.Page[Patient], currentSortBy: String, currentOrder: String, currentFilter: String) 
+@(currentPage: com.avaje.ebean.Page[PatientAssignment], currentSortBy: String, currentOrder: String, currentFilter: String) 
 
 @link(newPage:Int, newSortBy:String) = @{
     
@@ -19,7 +19,7 @@
     }
     
     // Generate the link
-    routes.DoctorController.patient(newPage, sortBy, order, currentFilter)
+    routes.DoctorController.patient_assignment(newPage, sortBy, order, currentFilter)
     
 }
 
@@ -31,8 +31,12 @@
 
 
     <div id="actions">        
-        <a class="btn success" id="add" href="@routes.DoctorController.create_patient()">Add a new patient</a>
+        <form action="@link(0, "employeeID")" method="GET">
+            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by employeeID">
+            <input type="submit" id="searchsubmit" value="Filter by name" class="btn primary">
+        </form>
 		<a class="btn success" id="add" href="@routes.DoctorController.add_patient_assignment()">Add a new patient assignment</a>
+		  
     </div>
     
     @if(currentPage.getTotalRowCount == 0) {
@@ -47,21 +51,18 @@
         
             <thead>
                 <tr>
-                    @header("name", "Patient")
-                    @header("medicardID", "MedicareID")
-					@header("hospitalcardID", "HospitalID")
-					@header("id", "Add Patient Visit")
+                    @header("employee.id", "EmployeeID")
+					@header("patient_visit.id", "PatientID")
                 </tr>
             </thead>
             
             <tbody>
-                @for(patient <- currentPage.getList) {
+                @for(patient_assignment <- currentPage.getList) {
                     <tr>
-                        <td><a href="@routes.DoctorController.edit_patient(patient.id)">@patient.name</a></td>
-                        <td>@patient.medicardID</td>
-						<td>@patient.hospitalcardID</td>
-						<td><a href="@routes.DoctorController.add_patient_visit(patient.id)">Add a new patient visit</a>        
-
+					    
+						<td>@patient_assignment.employee.id</td>
+						<td>@patient_assignment.patient_visit.id</td>
+						
                     </tr>
                 }
             </tbody>            

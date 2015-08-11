@@ -15,7 +15,7 @@ import models.*;
 public class DoctorController extends Controller{
 	
     public static Result index() {
-        return patient_index();
+        return patient_index(); ///////////////////////////HEEEEEEEEEERRRRRRREEEEEEEEEEEEE
 
     }
 	public static Result patient_index() {
@@ -26,7 +26,7 @@ public class DoctorController extends Controller{
 	public static Result patient(int page, String sortBy, String order, String filter) {
         return ok( //ok is to display
         		patient.render(Patient.page(page, 10, sortBy, order, filter),sortBy, order, filter)
-                );
+				);
     }
 	
 	public static Result create_patient(){
@@ -66,8 +66,120 @@ public class DoctorController extends Controller{
     
     public static Result delete_patient(long id) {
         Patient.find.ref(id).delete();
-        flash("success", "Patient has been deleted");
         return patient_index();
     }
+	////////////////////////////////////////////////////////////////////////////////
+	public static Result patient_visit_index() {
+    	return patient_visit(0, "name", "asc", "");
 
+    }
+	
+	public static Result patient_visit(int page, String sortBy, String order, String filter) {
+        return ok( //ok is to display
+        		patient_visit.render(PatientVisit.page(page, 10, sortBy, order, filter),sortBy, order, filter)
+				//patient_visit.render(PatientVisit.visit_page(Patient.find.ref(patient_visitForm.patient.id)))
+				);
+    }
+	
+	/*public static Result patient_visited(long patient_id, int page, String sortBy, String order, String filter){ 
+		 
+		 return ok(
+				patient_visited.render(PatientVisit.visit_page(patient_id, 10, sortBy, order, filter), sortBy, order, filter)
+				);
+	}*/  //FORGET THIS PART
+	
+	
+	public static Result add_patient_visit(long id){ 
+		 Form<PatientVisit> patient_visitForm = form(PatientVisit.class);
+		 return ok(
+			add_patient_visit.render(id, patient_visitForm)
+        );
+	}
+	
+	public static Result edit_patient_visit(long id){
+        Form<PatientVisit> patient_visitForm = form(PatientVisit.class).fill(
+        		PatientVisit.find.byId(id)
+            );        
+        return ok(
+                edit_patient_visit.render(id, patient_visitForm)
+            );
+    }
+    
+    public static Result save_patient_visit() {
+        Form<PatientVisit> patient_visitForm = form(PatientVisit.class).bindFromRequest();
+        if(patient_visitForm.hasErrors()) {
+            return TODO;
+        }
+        patient_visitForm.get().save();
+        return patient_visit_index();
+    }
+    
+    
+    public static Result update_patient_visit(long id) {
+        Form<PatientVisit> patient_visitForm = form(PatientVisit.class).bindFromRequest();
+        if(patient_visitForm.hasErrors()) {
+            return TODO;
+        }
+        patient_visitForm.get().update(id);
+        return patient_visit_index();
+    }
+    
+    public static Result delete_patient_visit(long id) {
+        PatientVisit.find.ref(id).delete();
+        return patient_visit_index();
+    }
+		
+	///////////////////////////////////////////////////////////////////////////////////////patient_assignment
+	public static Result patient_assignment_index() {
+    	return patient_assignment(0, "name", "asc", "");
+
+    }
+	
+	public static Result patient_assignment(int page, String sortBy, String order, String filter) {
+        return ok(
+        		patient_assignment.render(PatientAssignment.page(page, 10, sortBy, order, filter),sortBy, order, filter)
+				);
+    }
+	
+	public static Result add_patient_assignment(){
+        Form<PatientAssignment> patient_assignmentForm = form(PatientAssignment.class);
+        return ok(
+            add_patient_assignment.render(patient_assignmentForm)
+        );
+    }
+	
+	public static Result edit_patient_assignment(long id){
+        Form<PatientAssignment> patient_assignmentForm = form(PatientAssignment.class).fill(
+        		PatientAssignment.find.byId(id)
+            );        
+        return ok(
+                edit_patient_assignment.render(id, patient_assignmentForm)
+            );
+    }
+    
+    public static Result save_patient_assignment() {
+        Form<PatientAssignment> patient_assignmentForm = form(PatientAssignment.class).bindFromRequest();
+        if(patient_assignmentForm.hasErrors()) {
+            return badRequest(add_patient_assignment.render(patient_assignmentForm));
+        }
+        patient_assignmentForm.get().save();
+        return patient_assignment_index();
+    }
+    
+    
+    public static Result update_patient_assignment(long id) {
+        Form<PatientAssignment> patient_assignmentForm = form(PatientAssignment.class).bindFromRequest();
+        if(patient_assignmentForm.hasErrors()) {
+            return badRequest(add_patient_assignment.render(patient_assignmentForm));
+        }
+        patient_assignmentForm.get().update(id);
+        return patient_assignment_index();
+    }
+    
+    public static Result delete_patient_assignment(long id) {
+        PatientAssignment.find.ref(id).delete();
+        return patient_assignment_index();
+    }
+	
+	
 }

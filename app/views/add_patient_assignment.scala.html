@@ -1,0 +1,23 @@
+@(patient_assignmentForm: Form[PatientAssignment])
+
+@import helper._
+
+
+    
+    <h1>Add a patient visit</h1>
+    
+    @form(routes.DoctorController.save_patient_assignment()) {
+        
+        <fieldset>
+			
+			@inputText(patient_assignmentForm("employee.id"), '_label -> "EmployeeID")
+			@inputText(patient_assignmentForm("patient_visit.id"), '_label -> "PatientVisitID")
+            
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Create a new patient assignment" class="btn"> 
+        </div>
+        
+    }    
+
