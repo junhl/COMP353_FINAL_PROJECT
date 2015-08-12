@@ -58,11 +58,11 @@ public class PatientVisit extends Model{
         return options;
     }
 	
-	/*public static Map<String,Long> options() {
-        LinkedHashMap<String,Long> options = new LinkedHashMap<String,Long>();
+	public static Map<String,String> options() {
+        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
         for(PatientVisit c: PatientVisit.find.findList()) {
-            options.put(c.id.toString(), c.id);
+            options.put(c.id.toString(), c.id.toString());
         }
         return options;
-    }*/
+	}
 }

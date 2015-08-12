@@ -31,8 +31,8 @@ public class PatientAssignment extends Model{
     public static Page<PatientAssignment> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where()
-                .ilike("name", "%" + filter + "%")
-                .orderBy(sortBy + " " + order)
+                //.ilike("name", "%" + filter + "%")
+                //.orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
     }
