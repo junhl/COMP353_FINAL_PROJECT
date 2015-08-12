@@ -131,11 +131,11 @@ public class DoctorController extends Controller{
 		
 	///////////////////////////////////////////////////////////////////////////////////////patient_assignment
 	public static Result patient_assignment_index() {
-    	return patient_assignment(0, "name", "asc", "");
+    	return patient_assignment(0, "name", "asc", Long.parseLong(session("employee_id")));
 
     }
 	
-	public static Result patient_assignment(int page, String sortBy, String order, String filter) {
+	public static Result patient_assignment(int page, String sortBy, String order, Long filter) {
         return ok(
         		patient_assignment.render(PatientAssignment.page(page, 10, sortBy, order, filter),sortBy, order, filter)
 				);

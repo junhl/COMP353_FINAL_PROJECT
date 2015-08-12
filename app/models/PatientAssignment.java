@@ -28,12 +28,22 @@ public class PatientAssignment extends Model{
 	
     public static Finder<Long,PatientAssignment> find = new Finder<Long,PatientAssignment>(Long.class, PatientAssignment.class); 
 	
-    public static Page<PatientAssignment> page(int page, int pageSize, String sortBy, String order, String filter) {
-        return 
-            find.where()
-                //.ilike("name", "%" + filter + "%")
-                //.orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
-    }
+    public static Page<PatientAssignment> page(int page, int pageSize, String sortBy, String order, Long filter) {
+        if (filter == -1){
+			return 
+				find.where()
+					.findPagingList(pageSize)
+					.getPage(page); 
+			
+		}
+		
+		else{
+			return 
+				find.where()
+					.ilike("employee.id", Long.toString(filter))
+					//.orderBy(sortBy + " " + order)
+					.findPagingList(pageSize)
+					.getPage(page);
+		}
+	}
 }
