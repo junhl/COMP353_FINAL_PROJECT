@@ -13,13 +13,16 @@ import java.util.*;
 public class Application extends Controller {
 
     public static Result index() {
+    	if(session.("user_role") == null) {
 		Form<Login> employeeForm = form(Login.class);
         return ok(index.render("COMP353 FINAL PROJECT", employeeForm));
+    	}
+    	
+    	else return login_redirect();
     }
 	
 
-	
-	    public static Result return_index() {
+    public static Result return_index() {
 	        Form<Login> employeeForm = form(Login.class).bindFromRequest();
 			if(employeeForm.hasErrors()) {
             return TODO;
@@ -30,9 +33,13 @@ public class Application extends Controller {
 	         for (Employee e : employee){
 				 role_id = e.role.id;				 
 			 }
-				
-			
-			if (role_id== 1 || role_id == 2) {
+			 
+			 session("user_role", role_id);
+			return index();
+    }	
+    
+    public static Result login_redirect() {
+    			if (role_id== 1 || role_id == 2) {
 				return AdminController.index();
 			}
 			
@@ -53,5 +60,5 @@ public class Application extends Controller {
 			}
 			
 			return index();
-    }	
+    }
 }
