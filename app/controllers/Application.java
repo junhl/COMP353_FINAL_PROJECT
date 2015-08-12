@@ -13,7 +13,7 @@ import java.util.*;
 public class Application extends Controller {
 
     public static Result index() {
-    	if(session.("user_role") == null) {
+    	if(session("user_role") == null || session("user_role") == "-1") {
 		Form<Login> employeeForm = form(Login.class);
         return ok(index.render("COMP353 FINAL PROJECT", employeeForm));
     	}
@@ -21,25 +21,30 @@ public class Application extends Controller {
     	else return login_redirect();
     }
 	
+	public static Result logout() {
+			session("user_role" , "-1");
+		return index();
+	}
+	
 
     public static Result return_index() {
 	        Form<Login> employeeForm = form(Login.class).bindFromRequest();
 			if(employeeForm.hasErrors()) {
-            return TODO;
+				return TODO;
 			}
 			Login emp = employeeForm.get();
 			long role_id = 0;
 			 List<Employee> employee  = Employee.find.fetch("role").where().eq("id", emp.username).findList();
 	         for (Employee e : employee){
-			session("user_role", e.role.id);
-			session("employee_id", e.id);
+			session("user_role", Long.toString(e.role.id));
+			session("employee_id", Long.toString(e.id));
 			 }
 
 			return index();
     }	
     
     public static Result login_redirect() {
-    	long role_id = session("user_role");
+    	long role_id = Long.parseLong(session("user_role"), 10);
     			if (role_id== 1 || role_id == 2) {
 				return AdminController.index();
 			}

@@ -4,8 +4,8 @@
 
 # Home page
 GET     /                           					controllers.Application.index()
-POST     /                           					controllers.Application.return_index()
-
+POST     /return_index                           					controllers.Application.return_index()
+GET 	/logout												controllers.Application.logout()
 
 
 ##################### ADMIN DIRECTOR SECTION
@@ -41,7 +41,7 @@ POST	/doctor/patient_visit/:id							controllers.DoctorController.update_patient
 POST    /doctor/patient_visit/:id/delete       		controllers.DoctorController.delete_patient_visit(id:Long)
 
 GET     /doctor/patient_assignment                 							controllers.DoctorController.patient_assignment_index()
-GET		/doctor/patient_assignment								controllers.DoctorController.patient_assignment(id:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+GET		/doctor/patient_assignment								controllers.DoctorController.patient_assignment(id:Int ?= 0, s ?= "name", o ?= "asc", f:Long)
 GET		/doctor/patient_assignment/new							controllers.DoctorController.add_patient_assignment()
 POST	/doctor/patient_assignment							controllers.DoctorController.save_patient_assignment()
 GET		/doctor/patient_assignment/:id								controllers.DoctorController.edit_patient_assignment(id:Long)

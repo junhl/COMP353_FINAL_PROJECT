@@ -156,7 +156,7 @@ create table supervision (
 
 create table supply_specific_type (
   id                        bigint auto_increment not null,
-  supply_type_id            bigint,
+  supply_sub_type_id        bigint,
   vendor_id                 bigint,
   name                      varchar(255),
   cost                      double,
@@ -246,8 +246,8 @@ alter table supervision add constraint fk_supervision_supervised_22 foreign key 
 create index ix_supervision_supervised_22 on supervision (supervised_id);
 alter table supervision add constraint fk_supervision_supervisor_23 foreign key (supervisor_id) references employee (id) on delete restrict on update restrict;
 create index ix_supervision_supervisor_23 on supervision (supervisor_id);
-alter table supply_specific_type add constraint fk_supply_specific_type_suppl_24 foreign key (supply_type_id) references supply_sub_type (id) on delete restrict on update restrict;
-create index ix_supply_specific_type_suppl_24 on supply_specific_type (supply_type_id);
+alter table supply_specific_type add constraint fk_supply_specific_type_suppl_24 foreign key (supply_sub_type_id) references supply_sub_type (id) on delete restrict on update restrict;
+create index ix_supply_specific_type_suppl_24 on supply_specific_type (supply_sub_type_id);
 alter table supply_specific_type add constraint fk_supply_specific_type_vendo_25 foreign key (vendor_id) references vendor (id) on delete restrict on update restrict;
 create index ix_supply_specific_type_vendo_25 on supply_specific_type (vendor_id);
 alter table supply_sub_type add constraint fk_supply_sub_type_supply_typ_26 foreign key (supply_type_id) references supply_type (id) on delete restrict on update restrict;
