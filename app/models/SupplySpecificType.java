@@ -44,4 +44,17 @@ public class SupplySpecificType extends Model{
                 .findPagingList(pageSize)
                 .getPage(page);
     }
+    /*
+    public static Page<SupplySpecificType> report(int page, int pageSize, String sortBy, String order, String filter) {
+        return 
+            find
+            	.fetch()
+            	.fetch()
+            	.where()
+                .ilike("name", "%" + filter + "%")
+                .orderBy(sortBy + " " + order)
+                .findPagingList(pageSize)
+                .getPage(page);
+    }
+    */
 }
