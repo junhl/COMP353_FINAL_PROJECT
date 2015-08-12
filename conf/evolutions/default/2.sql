@@ -52,10 +52,6 @@ insert into employee(name, unit_id, role_id) values ('A NURSE SUPERVISOR', 1, 4)
 insert into employee(name, unit_id, role_id) values ('A NURSE', 1, 5);
 insert into employee(name, unit_id, role_id) values ('A INTERN', 1, 6);
 
-
-
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('John', 111, 123);
-
 insert into service (name,unit_id) values ('test1', 1);
 insert into service (name,unit_id) values ('test2', 1);
 insert into service (name,unit_id) values ('test3', 2);
@@ -64,15 +60,17 @@ insert into service (name,unit_id) values ('test4', 3);
 
 
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('John Smith', 111, 123);
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('Dave James', 111, 124);
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('John Smith', 111, 123);
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('Dave James', 111, 124);
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('John Smith', 111, 123);
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('Dave James', 111, 124);
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('John Smith', 111, 123);
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('Dave James', 111, 124);
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('John Smith', 111, 123);
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('Dave James', 111, 124);
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('John Smith', 111, 123);
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('Dave James', 111, 124);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Dave James', 113, 124);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('David Cameron', 114, 125);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Angela Merkel', 115, 126);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Tony Blair', 116, 127);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Barack Obama', 117, 128);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Hilary Clinton', 118, 129);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Bill Clinton', 119, 130);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('George H Bush', 120, 131);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('George H W Bush', 121, 132);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Jeb Bush', 122, 133);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('George Washington', 123, 134);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Stephen Harper', 124, 135);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Bill Gates', 125, 136);
 
