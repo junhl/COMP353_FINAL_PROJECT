@@ -48,5 +48,15 @@ public class Task extends Model{
             options.put(c.id.toString(), c.name);
         }
         return options;
-    }    
+    }
+    /*
+    public static Page<Task> page(int page, int pageSize, String sortBy, String order, String filter) {
+        return 
+            find.where()
+                .ilike("name", "%" + filter + "%")
+                .orderBy(sortBy + " " + order)
+                .findPagingList(pageSize)
+                .getPage(page);
+    }
+    */
 }
