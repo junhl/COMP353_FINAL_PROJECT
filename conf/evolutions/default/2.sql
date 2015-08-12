@@ -76,3 +76,18 @@ insert into patient (name,medicard_ID,hospitalcard_ID) values ('George Washingto
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('Stephen Harper', 124, 135);
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('Bill Gates', 125, 136);
 
+insert into supply_type(name) values ('MEDICAL');
+insert into supply_type(name) values ('NON-MEDICAL');
+insert into supply_type(name) values ('NUTRITIONAL');
+
+insert into supply_sub_type(name, supply_type_id) values ('MEDICATION', 1);
+insert into supply_sub_type(name, supply_type_id) values ('SURGICAL EQUIPMENT', 1);
+insert into supply_sub_type(name, supply_type_id) values ('SUPPORTING DEVICES', 1);
+
+insert into supply_sub_type(name, supply_type_id) values ('ADMINISTRATIVE', 2);
+insert into supply_sub_type(name, supply_type_id) values ('PATIENT USED MATERIALS', 2);
+insert into supply_sub_type(name, supply_type_id) values ('CLEANING USED MATERIALS', 2);
+
+insert into supply_sub_type(name, supply_type_id) values ('PERISHABLE GOODS', 3);
+insert into supply_sub_type(name, supply_type_id) values ('NON-PERISHABLE GOODS', 3);
+insert into supply_sub_type(name, supply_type_id) values ('KITCHEN EQUIPMENT', 3);
