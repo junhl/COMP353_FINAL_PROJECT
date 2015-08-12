@@ -39,20 +39,14 @@
 		  
     </div>
     
-    @if(currentPage.getTotalRowCount == 0) {
-        
-        <div class="well">
-            <em>Nothing to display</em>
-        </div>
-        
-    } else {
+    {
         
         <table class="computers zebra-striped">
         
             <thead>
                 <tr>
                     @header("employee.id", "EmployeeID")
-					@header("patient_visit.id", "PatientID")
+					@header("patient_visit.id", "PatientVisitID")
                 </tr>
             </thead>
             
@@ -60,8 +54,8 @@
                 @for(patient_assignment <- currentPage.getList) {
                     <tr>
 					    
-						<td>@patient_assignment.employee.id</td>
-						<td>@patient_assignment.patient_visit.id</td>
+						<td><a href="@routes.DoctorController.edit_patient_assignment(patient_assignment.id)">@patient_assignment.employee.id</a></td>
+						<td><a href="@routes.DoctorController.patient_visit()">@patient_assignment.patient_visit.id</td>
 						
                     </tr>
                 }
