@@ -31,10 +31,10 @@ public class Application extends Controller {
 			long role_id = 0;
 			 List<Employee> employee  = Employee.find.fetch("role").where().eq("id", emp.username).findList();
 	         for (Employee e : employee){
-				 role_id = e.role.id;				 
+			session("user_role", e.role.id);
+			session("employee_id", e.id);
 			 }
-			 
-			 session("user_role", role_id);
+
 			return index();
     }	
     
