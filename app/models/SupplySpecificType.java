@@ -19,7 +19,7 @@ public class SupplySpecificType extends Model{
 	
 	@ManyToOne
 	@Constraints.Required
-	public SupplySubType supply_type;
+	public SupplySubType supply_sub_type;
 	
 	@ManyToOne
 	@Constraints.Required
