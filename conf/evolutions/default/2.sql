@@ -64,6 +64,15 @@ insert into service (name,unit_id) values ('test4', 3);
 
 
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('John Smith', 111, 123);
-
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Dave James', 111, 124);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('John Smith', 111, 123);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Dave James', 111, 124);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('John Smith', 111, 123);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Dave James', 111, 124);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('John Smith', 111, 123);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Dave James', 111, 124);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('John Smith', 111, 123);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Dave James', 111, 124);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('John Smith', 111, 123);
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('Dave James', 111, 124);
 
