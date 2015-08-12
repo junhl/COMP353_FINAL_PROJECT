@@ -39,6 +39,7 @@ public class Application extends Controller {
     }	
     
     public static Result login_redirect() {
+    	long role_id = session("user_role");
     			if (role_id== 1 || role_id == 2) {
 				return AdminController.index();
 			}
