@@ -91,3 +91,28 @@ insert into supply_sub_type(name, supply_type_id) values ('CLEANING USED MATERIA
 insert into supply_sub_type(name, supply_type_id) values ('PERISHABLE GOODS', 3);
 insert into supply_sub_type(name, supply_type_id) values ('NON-PERISHABLE GOODS', 3);
 insert into supply_sub_type(name, supply_type_id) values ('KITCHEN EQUIPMENT', 3);
+
+insert into vendor(name) values ('MEDICAL VENDOR');
+insert into vendor(name) values ('NON-MEDICAL VENDOR VENDOR');
+insert into vendor(name) values ('NUTRITIONAL VENDOR');
+
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
+(1,1,'MEDICATION TYLENOL',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
+(2,1,'CUTTING TOOLS',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
+(3,1,'DEFIBS',0,0);
+
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
+(4,2,'STATIONARY',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
+(5,2,'PATIENT ROBES',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
+(6,2,'CLEANING BLEACH',0,0);
+
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
+(7,3,'FRESH FRUIT',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
+(8,3,'CANNED BEANS',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
+(9,3,'FORKS',0,0);
