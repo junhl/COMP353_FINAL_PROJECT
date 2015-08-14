@@ -1,0 +1,30 @@
+@(visit_id:Long, patient_treatment_historyForm: Form[PatientTreatmentHistory])
+
+@import helper._
+
+
+   
+    @main("Welcome to Play") {
+	<h1>Add a patient treatment history</h1>
+    
+    @form(routes.DoctorController.save_patient_treatment_history(visit_id)) {
+        
+        <fieldset>
+			@select(
+                patient_treatment_historyForm("patient_visit.id"), 
+                options(PatientVisit.options), 
+                '_label -> "PatientVisitID",
+                '_showConstraints -> false
+            )
+			@inputText(patient_treatment_historyForm("name"), '_label -> "History")
+			@inputText(patient_treatment_historyForm("date_of_treatment"), '_label -> "TreatmentDate")
+
+            
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Create a new patient treatment history" class="btn"> 
+        </div>
+        
+    }    
+}
