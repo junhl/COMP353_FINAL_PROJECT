@@ -57,8 +57,8 @@ POST	/doctor/patient_assignment/:id							controllers.DoctorController.update_pa
 POST    /doctor/patient_assignment/:id/delete       		controllers.DoctorController.delete_patient_assignment(id:Long)
 
 GET		/doctor/patient_treatment_history					controllers.DoctorController.patient_treatment_history(id:Int ?= 0, s ?= "name", o ?= "asc", f:Long)
-
-
+GET		/doctor/patient_treatment_history/new					controllers.DoctorController.add_patient_treatment_history(visit_id:Long)
+POST	/doctor/patient_treatment_history							controllers.DoctorController.save_patient_treatment_history(visit_id:Long)
 
 ##################### NURSE SECTION
 

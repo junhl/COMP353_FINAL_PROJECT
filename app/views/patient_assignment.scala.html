@@ -33,7 +33,7 @@
     @main("Welcome to Play") {<div id="actions">        
         <form action="@link(0, "employeeID")" method="GET">
             <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by employeeID">
-            <input type="submit" id="searchsubmit" value="Filter by name" class="btn primary">
+            <input type="submit" id="searchsubmit" value="Filter by employeeID" class="btn primary">
         </form>
 		<script> // the script part runs ONLY for admin/director which passes -1 as filter
 		if (currentFilter == -1){

@@ -5,3 +5,5 @@ NOTE
 2. Login seems to be bugged. (I start as logged-in state, and can't logout and login back in, it gives me 'password' does not have binding. Did you acutally set a password now ?)
 
 Working-ish as of this updated version.(2015-08-14)
+
+Doctor's patient related parts are now complete. (2015-08-14)
