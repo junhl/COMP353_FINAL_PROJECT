@@ -42,7 +42,7 @@ public class PatientTreatmentHistory extends Model{
 		else{
 			return 
 				find.where()
-					.ilike("patient_vist.id", Long.toString(filter))
+					.ilike("patient_visit.id", Long.toString(filter))
 					//.orderBy(sortBy + " " + order)
 					.findPagingList(pageSize)
 					.getPage(page);
