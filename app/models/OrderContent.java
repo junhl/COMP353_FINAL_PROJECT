@@ -20,6 +20,9 @@ public class OrderContent extends Model{
 	@Constraints.Required
 	public Orders order;
 	
+	@Constraints.Required
+	public Long quantity;
+	
 	@ManyToOne
 	@Constraints.Required
 	public SupplySpecificType supply_specific_type;
@@ -33,4 +36,12 @@ public class OrderContent extends Model{
 	public DeliveryService delivery_service;
 	
     public static Model.Finder<Long,OrderContent> find = new Model.Finder<Long,OrderContent>(Long.class, OrderContent.class);
+    
+    public static Page<OrderContent> page(int page, int pageSize, String sortBy, String order, String filter) {
+        return 
+            find.where()
+                .orderBy(sortBy + " " + order)
+                .findPagingList(pageSize)
+                .getPage(page);
+    }
 }

@@ -1,0 +1,20 @@
+@(id: Long, orderContentForm: Form[OrderContent])
+
+@import helper._
+
+
+@main("Welcome to Play") {
+<h1>Add order contents</h1>
+    
+    @form(routes.AdminController.save_order_content()) {
+        
+        <fieldset>
+     		
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Add this content" class="btn"> or 
+            <a href="@routes.AdminController.order_index()" class="btn">Cancel</a> 
+        </div>       
+    }    
+}
