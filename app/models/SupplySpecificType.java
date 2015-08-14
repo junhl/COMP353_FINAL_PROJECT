@@ -39,7 +39,6 @@ public class SupplySpecificType extends Model{
     public static Page<SupplySpecificType> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where()
-                .ilike("name", "%" + filter + "%")
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
