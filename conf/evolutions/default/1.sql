@@ -57,6 +57,7 @@ create table operating_rooms (
 create table order_content (
   id                        bigint auto_increment not null,
   order_id                  bigint,
+  quantity                  bigint,
   supply_specific_type_id   bigint,
   storage_location_id       bigint,
   delivery_service_id       bigint,

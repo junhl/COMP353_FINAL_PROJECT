@@ -1,4 +1,4 @@
-@(currentPage: com.avaje.ebean.Page[SupplySpecificType], currentSortBy: String, currentOrder: String, currentFilter: String) 
+@(currentPage: com.avaje.ebean.Page[OrderContent], currentSortBy: String, currentOrder: String, currentFilter: String) 
 
 @link(newPage:Int, newSortBy:String) = @{
     
@@ -19,7 +19,7 @@
     }
     
     // Generate the link
-    routes.AdminController.supply_index()
+    routes.AdminController.order_content_index()
     
 }
 
@@ -29,8 +29,7 @@
     </th>
 }
 @main("Welcome to Play") {
-    <div id="actions">        
-        <a class="btn success" id="add" href="@routes.AdminController.add_supply()">Add a new supply</a>        
+    <div id="actions">               
     </div>
     
     @if(currentPage.getTotalRowCount == 0) {
@@ -45,14 +44,24 @@
         
             <thead>
                 <tr>
-                    @header("name", "SupplySpecificType")
+                    @header("name", "")
+                    @header("order.id", "Order ID")
+                    @header("supply_specific_type.name", "Supply Type")
+                    @header("storage_location.name", "Storage Location")
+                    @header("delivery_service.name", "Delivery Service")
+                    @header("quantity", "Quantity")
                 </tr>
             </thead>
             
             <tbody>
-                @for(supply <- currentPage.getList) {
-                    <tr>
-                        <td>@supply.name</td>                      
+                @for(order_content <- currentPage.getList) {
+                    <tr>            
+                  		<td>@order_content.id</td>
+                  		<td>@order_content.order.id</td>
+                  		<td>@order_content.supply_specific_type.name</td>
+                  		<td>@order_content.storage_location.name</td>
+                  		<td>@order_content.delivery_service.name</td>
+                  		<td>@order_content.quantity</td>  
                     </tr>
                 }
             </tbody>            
