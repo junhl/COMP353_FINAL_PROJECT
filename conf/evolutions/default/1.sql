@@ -98,6 +98,7 @@ create table patient_visit (
   date_of_leave             timestamp,
   unit_id                   bigint,
   patient_id                bigint,
+  doctor                    bigint,
   constraint pk_patient_visit primary key (id))
 ;
 

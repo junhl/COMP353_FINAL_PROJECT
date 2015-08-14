@@ -1,4 +1,4 @@
-@(currentPage: com.avaje.ebean.Page[PatientVisit], currentSortBy: String, currentOrder: String, currentFilter: Long) 
+@(currentPage: com.avaje.ebean.Page[PatientTreatmentHistory], currentSortBy: String, currentOrder: String, currentFilter: Long) 
 
 @link(newPage:Int, newSortBy:String) = @{
     
@@ -19,7 +19,7 @@
     }
     
     // Generate the link
-    routes.DoctorController.patient_visit(newPage, sortBy, order, currentFilter)
+    routes.DoctorController.patient_treatment_history(newPage, sortBy, order, currentFilter)
     
 }
 
@@ -46,24 +46,16 @@
         
             <thead>
                 <tr>
-                    @header("id", "PatientVisitID")
-					@header("patient.id", "PatientName")
-                    @header("unit.id", "UnitID")
-					@header("date_of_visit", "VisitDate")
-					@header("date_of_leave","LeaveDate")
-					@header("seeHistory", "See treatment history")
+                    @header("patient_treatment_history.patient_visit.id", "PatientVisitID")
+					@header("name", "History")
                 </tr>
             </thead>
             
             <tbody>
-                @for(patient_visit <- currentPage.getList) {
+                @for(patient_treatment_history <- currentPage.getList) {
                     <tr>
-					    <td><a href="@routes.DoctorController.edit_patient_visit(patient_visit.id)">@patient_visit.id</a></td>
-                        <td><a href="@routes.DoctorController.edit_patient(patient_visit.patient.id)">@patient_visit.patient.name</a></td>
-                        <td>@patient_visit.unit.id</td>
-						<td>@patient_visit.date_of_visit</td>
-						<td>@patient_visit.date_of_leave</td>
-						<td><a href="@routes.DoctorController.patient_treatment_history(f=patient_visit.id)">See treatment history</td>
+					    <td>@patient_treatment_history.patient_visit.id</td>
+                        <td>@patient_treatment_history.name</td>
                     </tr>
                 }
             </tbody>            
