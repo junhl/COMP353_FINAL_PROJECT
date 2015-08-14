@@ -81,14 +81,6 @@ public class DoctorController extends Controller{
 				);
     }
 	
-	/*public static Result patient_visited(long patient_id, int page, String sortBy, String order, String filter){ 
-		 
-		 return ok(
-				patient_visited.render(PatientVisit.visit_page(patient_id, 10, sortBy, order, filter), sortBy, order, filter)
-				);
-	}*/  //FORGET THIS PART
-	
-	
 	public static Result add_patient_visit(long id){ 
 		 Form<PatientVisit> patient_visitForm = form(PatientVisit.class);
 		 return ok(
@@ -182,7 +174,7 @@ public class DoctorController extends Controller{
     }
 	////////////////////////////////////////////////////////////////////////////////////////////////patient treatment history
 	public static Result patient_treatment_history_index() {
-    	return patient_assignment(0, "name", "asc", Long.valueOf(-1));
+    	return patient_treatment_history(0, "name", "asc", Long.valueOf(-1));
     }
 	
 	public static Result patient_treatment_history(int page, String sortBy, String order, Long filter) {
@@ -190,5 +182,38 @@ public class DoctorController extends Controller{
         		patient_treatment_history.render(PatientTreatmentHistory.page(page, 10, sortBy, order, filter),sortBy, order, filter)
 				);
     }
+	public static Result add_patient_treatment_history(Long visit_id){
+        Form<PatientTreatmentHistory> patient_treatment_historyForm = form(PatientTreatmentHistory.class);
+        return ok(
+            add_patient_treatment_history.render(visit_id, patient_treatment_historyForm)
+        );
+    }
+	
+	public static Result save_patient_treatment_history(Long visit_id) {
+        Form<PatientTreatmentHistory> patient_treatment_historyForm = form(PatientTreatmentHistory.class).bindFromRequest();
+        if(patient_treatment_historyForm.hasErrors()) {
+            return badRequest(add_patient_treatment_history.render(visit_id, patient_treatment_historyForm));
+        }
+        patient_treatment_historyForm.get().save();
+        return patient_treatment_history(0, "name", "asc", visit_id);
+    }
+	
+	/*public static Result edit_patient_treatment_history(long id){
+        Form<PatientTreatmentHistory> patient_treatment_historyForm = form(PatientTreatmentHistory.class).fill(
+        		PatientTreatmentHistory.find.byId(id)
+            );        
+        return ok(
+                edit_patient_treatment_history.render(id, patient_treatment_historyForm)
+            );
+    }
+	public static Result update_patient_treatment_history(long id) {
+        Form<PatientTreatmentHistory> patient_treatment_historyForm = form(PatientTreatmentHistory.class).bindFromRequest();
+        //if(patient_treatment_historyForm.hasErrors()) {
+        //    return badRequest(add_patient_assignment.render(patient_assignmentForm));
+        //}
+        patient_treatment_historyForm.get().update(id);
+        return patient_treatment_history(0, "name", "asc", id);
+    }*/
+	
 	
 }
