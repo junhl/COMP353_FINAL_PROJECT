@@ -28,8 +28,8 @@ public class Employee extends Model{
 	@Constraints.Required
 	public Role role;
 	
-	@Constraints.Required
-	public DateTime date_time;
+	//@Constraints.Required
+	public java.util.Date hire_date;
 	
     public static Finder<Long,Employee> find = new Finder<Long,Employee>(Long.class, Employee.class); 
 	

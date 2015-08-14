@@ -61,20 +61,49 @@ insert into service (name,unit_id) values ('TEST SERVICE 1 UNIT 3', 3);
 insert into service (name,unit_id) values ('TEST SERVICE 2 UNIT 3', 3);
 
 
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('John Smith', 111, 123);
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('Dave James', 113, 124);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('David Koch', 111, 123);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Charles Koch', 113, 124);
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('David Cameron', 114, 125);
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('Angela Merkel', 115, 126);
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('Tony Blair', 116, 127);
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('Barack Obama', 117, 128);
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('Hilary Clinton', 118, 129);
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('Bill Clinton', 119, 130);
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('George H Bush', 120, 131);
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('George H W Bush', 121, 132);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('George Bush', 121, 132);
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('Jeb Bush', 122, 133);
-insert into patient (name,medicard_ID,hospitalcard_ID) values ('George Washington', 123, 134);
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('Stephen Harper', 124, 135);
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('Bill Gates', 125, 136);
+insert into patient (name,medicard_ID,hospitalcard_ID) values ('Steve Jobs', 125, 136);
+
+insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  1,  1);
+insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  1,  2);
+insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  1,  3);
+insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  1,  4);
+insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  1,  5);
+
+insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  2,  6);
+insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  2,  7);
+insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  2,  8);
+insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  2,  9);
+insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  2,  10);
+
+insert into patient_treatment_history(name, date_of_treatment, patient_visit_id) values ('SURGERY FOR LEG', '2015-08-14', 1);
+insert into patient_treatment_history(name, date_of_treatment, patient_visit_id) values ('SURGERY FOR EARS', '2015-08-14', 2);
+insert into patient_treatment_history(name, date_of_treatment, patient_visit_id) values ('CHECK UP', '2015-08-14', 3);
+insert into patient_treatment_history(name, date_of_treatment, patient_visit_id) values ('CHECK UP', '2015-08-14', 4);
+insert into patient_treatment_history(name, date_of_treatment, patient_visit_id) values ('BLOOD TEST', '2015-08-14', 5);
+insert into patient_treatment_history(name, date_of_treatment, patient_visit_id) values ('PROSTATE EXAM', '2015-08-14', 6);
+insert into patient_treatment_history(name, date_of_treatment, patient_visit_id) values ('EYE EXAM', '2015-08-14', 7);
+
+insert into operating_rooms(name) values ('OPERATING ROOM A');
+insert into operating_rooms(name) values ('OPERATING ROOM B');
+insert into operating_rooms(name) values ('OPERATING ROOM C');
+insert into operating_rooms(name) values ('OPERATING ROOM D');
+insert into operating_rooms(name) values ('OPERATING ROOM E');
+
+insert into task(name, employee_id, service_id, shift_id, canceled, patient_treatment_history_id) values ('LEG SURGERY', 3, 1, null, '0', 1);
+insert into task(name, employee_id, service_id, shift_id, canceled, patient_treatment_history_id) values ('EAR SURGERY', 3, 1, null, '0', 2);
+
 
 insert into supply_type(name) values ('MEDICAL');
 insert into supply_type(name) values ('NON-MEDICAL');
@@ -116,3 +145,10 @@ insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_i
 (8,3,'CANNED BEANS',0,0);
 insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
 (9,3,'FORKS',0,0);
+
+insert into storage_location(name, employee_id) values ('STORE ROOM A', 1);
+insert into storage_location(name, employee_id) values ('STORE ROOM B', 1);
+insert into storage_location(name, employee_id) values ('STORE ROOM C', 1);
+insert into storage_location(name, employee_id) values ('STORE ROOM D', 1);
+insert into storage_location(name, employee_id) values ('STORE ROOM E', 1);
+insert into storage_location(name, employee_id) values ('STORE ROOM F', 1);

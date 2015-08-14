@@ -17,19 +17,9 @@ public class OperatingRooms extends Model{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Long id;
 	
-	@ManyToOne
 	@Constraints.Required
-	public Task task;
-	
-	@ManyToOne
-	@Constraints.Required
-	public OperatingRooms operating_room;
-	
-	@Constraints.Required
-	public DateTime start_time;
-	
-	@Constraints.Required
-	public DateTime end_time;
+	public String name;
+
 
 	
     public static Finder<Long,OperatingRooms> find = new Finder<Long,OperatingRooms>(Long.class, OperatingRooms.class); 
@@ -37,8 +27,8 @@ public class OperatingRooms extends Model{
     public static Page<OperatingRooms> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where()
-                .ilike("name", "%" + filter + "%")
-                .orderBy(sortBy + " " + order)
+                //.ilike("name", "%" + filter + "%")
+                //.orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
     }

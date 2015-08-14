@@ -20,6 +20,10 @@ public class PatientTreatmentHistory extends Model{
 	@Constraints.Required
 	public String name;
 	
+	@Constraints.Required
+	@Formats.DateTime(pattern="yyyy-MM-dd")
+	public Date date_of_treatment;
+	
 	@ManyToOne
 	@Constraints.Required
 	public PatientVisit patient_visit;

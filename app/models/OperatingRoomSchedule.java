@@ -17,8 +17,19 @@ public class OperatingRoomSchedule extends Model{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Long id;
 	
+	@ManyToOne
 	@Constraints.Required
-	public String name;	
+	public Task task;
+	
+	@ManyToOne
+	@Constraints.Required
+	public OperatingRooms operating_room;
+	
+	@Constraints.Required
+	public DateTime start_time;
+	
+	@Constraints.Required
+	public DateTime end_time;
 	
     public static Finder<Long,OperatingRoomSchedule> find = new Finder<Long,OperatingRoomSchedule>(Long.class, OperatingRoomSchedule.class); 
 	

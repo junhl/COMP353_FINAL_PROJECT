@@ -23,6 +23,7 @@ create table employee (
   name                      varchar(255),
   unit_id                   bigint,
   role_id                   bigint,
+  hire_date                 timestamp,
   constraint pk_employee primary key (id))
 ;
 
@@ -42,14 +43,14 @@ create table login (
 
 create table operating_room_schedule (
   id                        bigint auto_increment not null,
-  name                      varchar(255),
+  task_id                   bigint,
+  operating_room_id         bigint,
   constraint pk_operating_room_schedule primary key (id))
 ;
 
 create table operating_rooms (
   id                        bigint auto_increment not null,
-  task_id                   bigint,
-  operating_room_id         bigint,
+  name                      varchar(255),
   constraint pk_operating_rooms primary key (id))
 ;
 
@@ -86,6 +87,7 @@ create table patient_assignment (
 create table patient_treatment_history (
   id                        bigint auto_increment not null,
   name                      varchar(255),
+  date_of_treatment         timestamp,
   patient_visit_id          bigint,
   constraint pk_patient_treatment_history primary key (id))
 ;
@@ -210,10 +212,10 @@ alter table inventory add constraint fk_inventory_storage_location_4 foreign key
 create index ix_inventory_storage_location_4 on inventory (storage_location_id);
 alter table inventory add constraint fk_inventory_supply_specific_t_5 foreign key (supply_specific_type_id) references supply_specific_type (id) on delete restrict on update restrict;
 create index ix_inventory_supply_specific_t_5 on inventory (supply_specific_type_id);
-alter table operating_rooms add constraint fk_operating_rooms_task_6 foreign key (task_id) references task (id) on delete restrict on update restrict;
-create index ix_operating_rooms_task_6 on operating_rooms (task_id);
-alter table operating_rooms add constraint fk_operating_rooms_operating_r_7 foreign key (operating_room_id) references operating_rooms (id) on delete restrict on update restrict;
-create index ix_operating_rooms_operating_r_7 on operating_rooms (operating_room_id);
+alter table operating_room_schedule add constraint fk_operating_room_schedule_tas_6 foreign key (task_id) references task (id) on delete restrict on update restrict;
+create index ix_operating_room_schedule_tas_6 on operating_room_schedule (task_id);
+alter table operating_room_schedule add constraint fk_operating_room_schedule_ope_7 foreign key (operating_room_id) references operating_rooms (id) on delete restrict on update restrict;
+create index ix_operating_room_schedule_ope_7 on operating_room_schedule (operating_room_id);
 alter table order_content add constraint fk_order_content_order_8 foreign key (order_id) references orders (id) on delete restrict on update restrict;
 create index ix_order_content_order_8 on order_content (order_id);
 alter table order_content add constraint fk_order_content_supply_specif_9 foreign key (supply_specific_type_id) references supply_specific_type (id) on delete restrict on update restrict;
