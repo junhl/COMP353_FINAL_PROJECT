@@ -15,8 +15,8 @@ import models.*;
 public class DoctorController extends Controller{
 	
     public static Result index() {
-        return patient_index(); ///////////////////////////HEEEEEEEEEERRRRRRREEEEEEEEEEEEE
-
+        //return patient_index(); / now has been changed to start with assignment to go visit to patient`
+		return patient_assignment_index();
     }
 	public static Result patient_index() {
     	return patient(0, "name", "asc", "");
@@ -24,7 +24,7 @@ public class DoctorController extends Controller{
     }
 	
 	public static Result patient(int page, String sortBy, String order, String filter) {
-        return ok( //ok is to display
+        return ok(
         		patient.render(Patient.page(page, 10, sortBy, order, filter),sortBy, order, filter)
 				);
     }
@@ -70,11 +70,11 @@ public class DoctorController extends Controller{
     }
 	////////////////////////////////////////////////////////////////////////////////
 	public static Result patient_visit_index() {
-    	return patient_visit(0, "name", "asc", "");
+    	return patient_visit(0, "name", "asc", Long.parseLong(session("employee_id")));
 
     }
 	
-	public static Result patient_visit(int page, String sortBy, String order, String filter) {
+	public static Result patient_visit(int page, String sortBy, String order, Long filter) {
         return ok( //ok is to display
         		patient_visit.render(PatientVisit.page(page, 10, sortBy, order, filter),sortBy, order, filter)
 				//patient_visit.render(PatientVisit.visit_page(Patient.find.ref(patient_visitForm.patient.id)))
@@ -180,6 +180,15 @@ public class DoctorController extends Controller{
         PatientAssignment.find.ref(id).delete();
         return patient_assignment_index();
     }
+	////////////////////////////////////////////////////////////////////////////////////////////////patient treatment history
+	public static Result patient_treatment_history_index() {
+    	return patient_assignment(0, "name", "asc", Long.valueOf(-1));
+    }
 	
+	public static Result patient_treatment_history(int page, String sortBy, String order, Long filter) {
+        return ok(
+        		patient_treatment_history.render(PatientTreatmentHistory.page(page, 10, sortBy, order, filter),sortBy, order, filter)
+				);
+    }
 	
 }

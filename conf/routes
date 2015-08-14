@@ -33,7 +33,7 @@ POST	/doctor/patient/:id							controllers.DoctorController.update_patient(id:Lo
 POST    /doctor/patient/:id/delete       		controllers.DoctorController.delete_patient(id:Long)
 
 GET     /doctor/patient_visit                 							controllers.DoctorController.patient_visit_index()
-GET		/doctor/patient_visit								controllers.DoctorController.patient_visit(id:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+GET		/doctor/patient_visit								controllers.DoctorController.patient_visit(id:Int ?= 0, s ?= "name", o ?= "asc", f:Long)
 GET		/doctor/patient_visit/new							controllers.DoctorController.add_patient_visit(id:Long)
 POST	/doctor/patient_visit							controllers.DoctorController.save_patient_visit()
 GET		/doctor/patient_visit/:id								controllers.DoctorController.edit_patient_visit(id:Long)
@@ -47,6 +47,9 @@ POST	/doctor/patient_assignment							controllers.DoctorController.save_patient_
 GET		/doctor/patient_assignment/:id								controllers.DoctorController.edit_patient_assignment(id:Long)
 POST	/doctor/patient_assignment/:id							controllers.DoctorController.update_patient_assignment(id:Long)
 POST    /doctor/patient_assignment/:id/delete       		controllers.DoctorController.delete_patient_assignment(id:Long)
+
+GET		/doctor/patient_treatment_history					controllers.DoctorController.patient_treatment_history(id:Int ?= 0, s ?= "name", o ?= "asc", f:Long)
+
 
 
 ##################### NURSE SECTION

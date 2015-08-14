@@ -32,24 +32,28 @@ public class PatientVisit extends Model{
 	@Constraints.Required
 	public Patient patient;
 	
+	// THIS IS NEWWWWWWW
+	public Long doctor;
+	
     public static Finder<Long,PatientVisit> find = new Finder<Long,PatientVisit>(Long.class, PatientVisit.class);
 
-	/*public static Page<PatientVisit> visit_page(long patient_id, int page, int pageSize, String sortBy, String order, String filter) {
-        return 
+	
+    public static Page<PatientVisit> page(int page, int pageSize, String sortBy, String order, Long filter) {
+        if (filter == -1){
+			return 
+				find.where()
+					.findPagingList(pageSize)
+					.getPage(page); 
+			
+		}
+		else{
+			return 
             find.where()
-                .ilike("patient.id", Long.toString(patient_id))
+                .ilike("doctor", Long.toString(filter))
                 .findPagingList(pageSize)
                 .getPage(page);
-    }*/ // FORGET THIS PART
-	
-	
-    public static Page<PatientVisit> page(int page, int pageSize, String sortBy, String order, String filter) {
-        return 
-            find.where()
-                //.ilike("name", "%" + filter + "%")
-                .findPagingList(pageSize)
-                .getPage(page);
-    }
+		}
+	}
 	
 	public static Map<String,String> find_the_id(long id) {
         LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();

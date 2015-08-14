@@ -75,10 +75,10 @@ insert into patient (name,medicard_ID,hospitalcard_ID) values ('Stephen Harper',
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('Bill Gates', 125, 136);
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('Steve Jobs', 125, 136);
 
-insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  1,  1);
+insert into patient_visit (date_of_visit, unit_id, patient_id, doctor) values ('2015-08-13',  1,  1, 3);
 insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  1,  2);
-insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  1,  3);
-insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  1,  4);
+insert into patient_visit (date_of_visit, unit_id, patient_id, doctor) values ('2015-08-13',  1,  3, 3);
+insert into patient_visit (date_of_visit, unit_id, patient_id, doctor) values ('2015-08-13',  1,  4, 3);
 insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  1,  5);
 
 insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  2,  6);
@@ -86,6 +86,10 @@ insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-
 insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  2,  8);
 insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  2,  9);
 insert into patient_visit (date_of_visit, unit_id, patient_id) values ('2015-08-13',  2,  10);
+
+insert into patient_assignment (employee_id, patient_visit_id) values (3, 1);
+insert into patient_assignment (employee_id, patient_visit_id) values (3, 3);
+insert into patient_assignment (employee_id, patient_visit_id) values (3, 4);
 
 insert into patient_treatment_history(name, date_of_treatment, patient_visit_id) values ('SURGERY FOR LEG', '2015-08-14', 1);
 insert into patient_treatment_history(name, date_of_treatment, patient_visit_id) values ('SURGERY FOR EARS', '2015-08-14', 2);

@@ -30,12 +30,22 @@ public class PatientTreatmentHistory extends Model{
 	
     public static Finder<Long,PatientTreatmentHistory> find = new Finder<Long,PatientTreatmentHistory>(Long.class, PatientTreatmentHistory.class); 
 	
-    public static Page<PatientTreatmentHistory> page(int page, int pageSize, String sortBy, String order, String filter) {
-        return 
-            find.where()
-                .ilike("name", "%" + filter + "%")
-                .orderBy(sortBy + " " + order)
-                .findPagingList(pageSize)
-                .getPage(page);
-    }
+    public static Page<PatientTreatmentHistory> page(int page, int pageSize, String sortBy, String order, Long filter) {
+        if (filter == Long.valueOf(-1)){
+			return
+				find.where()
+                //.ilike("name", "%" + filter + "%")
+                //.orderBy(sortBy + " " + order)
+					.findPagingList(pageSize)
+					.getPage(page);
+		}	
+		else{
+			return 
+				find.where()
+					.ilike("patient_vist.id", Long.toString(filter))
+					//.orderBy(sortBy + " " + order)
+					.findPagingList(pageSize)
+					.getPage(page);
+		}
+	}
 }
