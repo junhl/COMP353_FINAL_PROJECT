@@ -49,14 +49,19 @@ public class Task extends Model{
         }
         return options;
     }
-    /*
-    public static Page<Task> page(int page, int pageSize, String sortBy, String order, String filter) {
-        return 
+    // Once again, Admin passes -1 as filter using index, and doctors acess this as their employeeID as filter
+    public static Page<Task> page(int page, int pageSize, String sortBy, String order, Long filter) {
+        if (filter == -1){
+			return 
             find.where()
-                .ilike("name", "%" + filter + "%")
-                .orderBy(sortBy + " " + order)
+                .findPagingList(pageSize)
+                .getPage(page);			
+		}		
+		return 
+            find.where()
+                .ilike("employee.id", Long.toString(filter))
+                //.orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
     }
-    */
 }

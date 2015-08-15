@@ -48,4 +48,17 @@ public class PatientTreatmentHistory extends Model{
 					.getPage(page);
 		}
 	}
+	public static Map<String,String> find_the_id(long id) {
+        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
+		PatientTreatmentHistory pv = PatientTreatmentHistory.find.byId(id);
+        options.put(pv.id.toString(), pv.id.toString());     
+        return options;
+    }
+	public static Map<String,String> options() {
+        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
+        for(PatientTreatmentHistory c: PatientTreatmentHistory.find.findList()) {
+            options.put(c.id.toString(), c.id.toString());
+        }
+        return options;
+	}
 }
