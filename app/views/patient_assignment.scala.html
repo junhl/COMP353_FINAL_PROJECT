@@ -40,11 +40,12 @@
 			<a class="btn success" id="add" href="@routes.DoctorController.add_patient_assignment()">Add a new patient assignment</a>
 		}
 		</script>
-		<a class="btn success" id="add" href="@routes.DoctorController.patient_visit(f=3)">See patient visit</a>
+		<a class="btn success" id="add" href="@routes.DoctorController.patient_visit(f=currentFilter)">See patient visit</a>
+		
 		  
     </div>
-    
-    
+		<div><a class="btn success" id="add" href="@routes.DoctorController.supervision(f=currentFilter)">See supervision</a></div>
+		<div><a class="btn success" id="add" href="@routes.DoctorController.task(f=currentFilter)">See tasks</a></div>
         
         <table class="computers zebra-striped">
         
@@ -59,7 +60,7 @@
                 @for(patient_assignment <- currentPage.getList) {
                     <tr>
 					    
-						<td><a href="@routes.DoctorController.edit_patient_assignment(patient_assignment.id)">@patient_assignment.employee.id</a></td>
+						<td>@patient_assignment.employee.id</td>
 						<td><a href="@routes.DoctorController.edit_patient_visit(patient_assignment.patient_visit.id)">@patient_assignment.patient_visit.id</td>
 						
                     </tr>
