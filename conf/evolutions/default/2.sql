@@ -60,8 +60,6 @@ insert into service (name,unit_id) values ('TEST SERVICE 1 UNIT 2', 2);
 insert into service (name,unit_id) values ('TEST SERVICE 1 UNIT 3', 3);
 insert into service (name,unit_id) values ('TEST SERVICE 2 UNIT 3', 3);
 
-insert into supervision (supervised_id, supervisor_id) values (6, 3);
-insert into supervision (supervised_id, supervisor_id) values (5, 3);
 
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('David Koch', 111, 123);
 insert into patient (name,medicard_ID,hospitalcard_ID) values ('Charles Koch', 113, 124);

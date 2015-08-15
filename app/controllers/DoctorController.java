@@ -68,7 +68,7 @@ public class DoctorController extends Controller{
         Patient.find.ref(id).delete();
         return patient_index();
     }
-	//////////////////////////////////////////////////////////////////////////////// patient_visit
+	////////////////////////////////////////////////////////////////////////////////
 	public static Result patient_visit_index() {
     	return patient_visit(0, "name", "asc", Long.parseLong(session("employee_id")));
 
@@ -214,51 +214,6 @@ public class DoctorController extends Controller{
         patient_treatment_historyForm.get().update(id);
         return patient_treatment_history(0, "name", "asc", id);
     }*/
-	//////////////////////////////////////////////////////////////////////////////////////////////////////supervision
-	public static Result supervision(int page, String sortBy, String order, Long filter) {
-        return ok(
-        		supervision.render(Supervision.page(page, 10, sortBy, order, filter),sortBy, order, filter)
-				);
-    }
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////////////task
-	public static Result task(int page, String sortBy, String order, Long filter) {
-        return ok(
-        		task.render(Task.page(page, 10, sortBy, order, filter),sortBy, order, filter)
-				);
-    }
-	
-	public static Result add_task(Long history_id){
-        Form<Task> taskForm = form(Task.class);
-        return ok(
-            add_task.render(history_id, taskForm)
-        );
-    }
-	
-	public static Result save_task(Long history_id) {
-        Form<Task> taskForm = form(Task.class).bindFromRequest();
-        if(taskForm.hasErrors()) {
-            return badRequest(add_task.render(history_id, taskForm));
-        }
-        taskForm.get().save();
-        return task(0, "name", "asc", Long.parseLong(session("employee_id")));
-    }
-	
-	
-	public static Result edit_task(long id){ // this id is taskID to edit
-        Form<Task> taskForm = form(Task.class).fill(
-        		Task.find.byId(id)
-            );        
-        return ok(
-                edit_task.render(id, taskForm)
-            );
-    }
-	
-	public static Result update_task(long id) {
-        Form<Task> taskForm = form(Task.class).bindFromRequest();
-        taskForm.get().update(id);
-        return task(0, "name", "asc", Long.parseLong(session("employee_id")));
-    }
-
 	
 }
