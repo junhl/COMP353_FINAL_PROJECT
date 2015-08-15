@@ -135,9 +135,10 @@ public class AdminController extends Controller{
     }
     
     //////////SUPPLY ORDER CONTENTS////////////
-    public static Result order_content_index(){	
-    	return order_content(0, "id", "asc", "");
+    public static Result order_content_index(Long id){	
+    	return order_content(0, "id", "asc", Long.toString(id));
     }
+    
     public static Result order_content(int page, String sortBy, String orderBy, String filter){
     	return ok(
     			order_content.render(OrderContent.page(page,10,sortBy,orderBy,filter),sortBy,orderBy,filter)

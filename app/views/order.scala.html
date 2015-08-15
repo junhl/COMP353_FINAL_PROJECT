@@ -29,10 +29,9 @@
     </th>
 }
 @main("Welcome to Play") {
-    <div id="actions">        
-        <a class="btn success" id="add" href="@routes.AdminController.add_order()">Place an order</a>        
+    <div>        
+        <a class="btn success" href="@routes.AdminController.add_order()">Place an order</a>        
     </div>
-    
     @if(currentPage.getTotalRowCount == 0) {
         
         <div class="well">
@@ -53,7 +52,7 @@
             <tbody>
                 @for(order <- currentPage.getList) {
                     <tr>
-                        <td><a href="@routes.AdminController.order_content_index()">@order.id</a></td>
+                        <td><a href="@routes.AdminController.order_content_index(order.id)">@order.id</a></td>
                         <td>@order.date</td>                      
                     </tr>
                 }
