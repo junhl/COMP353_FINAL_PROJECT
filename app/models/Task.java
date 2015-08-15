@@ -49,14 +49,22 @@ public class Task extends Model{
         }
         return options;
     }
-    /*
-    public static Page<Task> page(int page, int pageSize, String sortBy, String order, String filter) {
-        return 
+
+    public static Page<Task> page(int page, int pageSize, String sortBy, String order, Long filter) {
+        if (filter == -1){			
+			return 
             find.where()
-                .ilike("name", "%" + filter + "%")
-                .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
-    }
-    */
+		}
+		else{
+			return 
+            find.where()
+                .ilike("employee.id", Long.toString(filter))
+                //.orderBy(sortBy + " " + order)
+                .findPagingList(pageSize)
+                .getPage(page);
+		}
+	}
+
 }
