@@ -156,3 +156,14 @@ insert into storage_location(name, employee_id) values ('STORE ROOM C', 1);
 insert into storage_location(name, employee_id) values ('STORE ROOM D', 1);
 insert into storage_location(name, employee_id) values ('STORE ROOM E', 1);
 insert into storage_location(name, employee_id) values ('STORE ROOM F', 1);
+
+insert into orders(date) values('2015-08-04');
+insert into orders(date) values('2015-08-05');
+insert into orders(date) values('2015-08-06');
+insert into orders(date) values('2015-08-07');
+
+insert into delivery_service(name, is_immediate_shipping) values ('PUROLATOR', '1');
+
+insert into order_content(order_id, quantity, supply_specific_type_id, storage_location_id, delivery_service_id) 
+	values (1, 10, 1, 1, 1);
+    

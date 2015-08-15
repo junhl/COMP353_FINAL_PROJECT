@@ -19,4 +19,12 @@ public class Orders extends Model{
 	public Date date;
 	
     public static Model.Finder<Long,Orders> find = new Model.Finder<Long,Orders>(Long.class, Orders.class);
+    
+    public static Page<Orders> page(int page, int pageSize, String sortBy, String order, String filter) {
+        return 
+            find.where()
+                .orderBy(sortBy + " " + order)
+                .findPagingList(pageSize)
+                .getPage(page);
+    }
 }

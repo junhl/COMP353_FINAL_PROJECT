@@ -3,31 +3,45 @@
 # ~~~~
 
 # Home page
-GET     /                           					controllers.Application.index()
-POST     /return_index                           					controllers.Application.return_index()
-GET 	/logout												controllers.Application.logout()
+GET     /                          						controllers.Application.index()
+POST    /return_index                           		controllers.Application.return_index()
+GET 	/logout											controllers.Application.logout()
 
 
 ##################### ADMIN DIRECTOR SECTION
 
-GET     /admin                 								controllers.AdminController.index()
-GET     /admin/service                 							controllers.AdminController.service_index()
+GET     /admin                 							controllers.AdminController.index()
 
-GET 	/admin/supply											controllers.AdminController.supply(id:Int ?=0, s ?= "name", o ?= "asc", f ?= "")
-GET     /admin/supply											controllers.AdminController.supply_index()
-GET		/admin/supply/new										controllers.AdminController.add_supply()
-GET 	/admin/supply/:id									controllers.AdminController.edit_supply(id:Long)
-POST	/admin/supply/:id							controllers.AdminController.update_supply(id:Long)
+##### SERVICES #####
+GET     /admin/service/list         					controllers.AdminController.service_index()
+GET		/admin/service/param_list						controllers.AdminController.service(id:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+GET		/admin/service/create							controllers.AdminController.create_service()
+POST	/admin/service/save								controllers.AdminController.save_service()
+GET		/admin/service/:id/edit							controllers.AdminController.edit_service(id:Long)
+POST	/admin/service/:id/update						controllers.AdminController.update_service(id:Long)
+POST    /admin/service/:id/delete       				controllers.AdminController.delete_service(id:Long)
+
+##### SUPPLIES #####
+GET     /admin/supply/list								controllers.AdminController.supply_index()
+GET 	/admin/supply/param_list						controllers.AdminController.supply(id:Int ?=0, s ?= "name", o ?= "asc", f ?= "")
+GET		/admin/supply/create							controllers.AdminController.add_supply()
+POST	/admin/supply/save								controllers.AdminController.save_supply()
+GET 	/admin/supply/:id/edit							controllers.AdminController.edit_supply(id:Long)
+POST	/admin/supply/:id/update						controllers.AdminController.update_supply(id:Long)
 POST    /admin/supply/:id/delete       					controllers.AdminController.delete_supply(id:Long)
-POST	/admin/supply										controllers.AdminController.save_supply()
 
-GET		/admin/service								controllers.AdminController.service(id:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+##### SUPPLY ORDERS #####
+GET     /admin/order/list								controllers.AdminController.order_index()
+GET 	/admin/order/param_list							controllers.AdminController.order(id:Int ?=0, s ?= "name", o ?= "asc", f ?= "")
+GET		/admin/order/create								controllers.AdminController.add_order()
+POST	/admin/order/save								controllers.AdminController.save_order()
+GET 	/admin/order/:id/edit							controllers.AdminController.edit_order(id:Long)
 
-GET		/admin/service/new							controllers.AdminController.create_service()
-POST	/admin/service							controllers.AdminController.save_service()
-GET		/admin/service/:id								controllers.AdminController.edit_service(id:Long)
-POST	/admin/service/:id							controllers.AdminController.update_service(id:Long)
-POST    /admin/service/:id/delete       		controllers.AdminController.delete_service(id:Long)
+##### SUPPLY ORDER CONTENTS #####
+GET     /admin/order_content/list						controllers.AdminController.order_content_index()
+GET 	/admin/order_content/param_list					controllers.AdminController.order_content(id:Int ?=0, s ?= "name", o ?= "asc", f ?= "")
+POST	/admin/order_content/create/:id					controllers.AdminController.add_order_content(id:Long)
+POST	/admin/order_content/save						controllers.AdminController.save_order_content()
 
 ##################### DOCTOR SECTION
 GET     /doctor                        				controllers.DoctorController.index()
@@ -63,7 +77,6 @@ POST	/doctor/patient_treatment_history							controllers.DoctorController.save_p
 ##################### NURSE SECTION
 
 GET     /nurse                     					controllers.NurseController.index()
-
 
 ##################### NURSE SUPERVISOR SECTION
 
