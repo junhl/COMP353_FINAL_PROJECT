@@ -20,7 +20,6 @@ public class OrderContent extends Model{
 	@Constraints.Required
 	public Orders order;
 	
-	@Constraints.Required
 	public Long quantity;
 	
 	@ManyToOne

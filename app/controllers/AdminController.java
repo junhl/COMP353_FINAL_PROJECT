@@ -150,14 +150,14 @@ public class AdminController extends Controller{
    	 			);
     }
     public static Result save_order_content(){	
-    	Form<OrderContent> orderContentForm = form (OrderContent.class);
+    	Form<OrderContent> orderContentForm = form (OrderContent.class).bindFromRequest();
     	if(orderContentForm.hasErrors()){
-    		return badRequest(add_order_content.render(orderContentForm.get().id, orderContentForm));
+    		
+    		return TODO;
     	}
     	orderContentForm.get().save();
     	return order_index();
-    }
-    
+    }    
     
     public static Result schedules() {
         return TODO;
