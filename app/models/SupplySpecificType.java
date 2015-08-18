@@ -56,4 +56,12 @@ public class SupplySpecificType extends Model{
                 .getPage(page);
     }
     */
+    
+    public static Map<String,String> options() {
+        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
+        for(SupplySpecificType c: SupplySpecificType.find.orderBy("id").findList()) {
+            options.put(c.id.toString(), c.name);
+        }
+        return options;
+    }   
 }

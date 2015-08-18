@@ -6,9 +6,36 @@
 @main("Welcome to Play") {
 <h1>Add order contents</h1>
     
-    @form(routes.AdminController.save_order_content()) {
-        
+    @form(routes.AdminController.save_order_content()) {        
         <fieldset>
+        	@select(
+                orderContentForm("order.id"), 
+                options(Orders.options), 
+                '_label -> "Order",
+                '_showConstraints -> false
+            )
+            @select(
+                orderContentForm("supply_specific_type.id"), 
+                options(SupplySpecificType.options), 
+                '_label -> "Supply Specific Type",
+                '_showConstraints -> false
+            )
+            @select(
+                orderContentForm("storage_location.id"), 
+                options(StorageLocation.options), 
+                '_label -> "Storage Location",
+                '_showConstraints -> false
+            )
+            @select(
+                orderContentForm("delivery_service.id"), 
+                options(DeliveryService.options), 
+                '_label -> "Delivery Service",
+                '_showConstraints -> false
+            )
+            @inputText(
+            field = orderContentForm("quantity"),
+            args = '_label -> "Quantity", 'placeholder -> 0
+        )
      		
         </fieldset>
         
@@ -17,4 +44,10 @@
             <a href="@routes.AdminController.order_index()" class="btn">Cancel</a> 
         </div>       
     }    
+    
+    @if(orderContentForm.hasGlobalErrors) {
+    <p class="error">
+        @orderContentForm.globalError.message
+    </p>
+}
 }

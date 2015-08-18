@@ -1,0 +1,39 @@
+@(history_id:Long, taskForm: Form[Task])
+
+@import helper._
+
+    @main("Welcome to Play") {
+	<h1>Add a new task</h1>
+    
+    @form(routes.DoctorController.save_task(history_id)) {
+        
+        <fieldset>
+			@select(
+                taskForm("service.id"), 
+                options(Service.options), 
+                '_label -> "ServiceID",
+                '_showConstraints -> false
+            )
+			@select(
+                taskForm("employee.id"), 
+                options(Employee.options), 
+                '_label -> "EmployeeID",
+                '_showConstraints -> false
+            )
+			@inputText(taskForm("date"), '_label -> "Date")
+			@inputText(taskForm("canceled"), '_label -> "Cancel")
+			@select(
+                taskForm("patient_treatment_history.id"), 
+                options(PatientTreatmentHistory.find_the_id(history_id)), 
+                '_label -> "PatientTreatmentHistoryID",
+                '_showConstraints -> false
+            )
+            
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Create a new patient visit" class="btn"> 
+        </div>
+        
+    }    
+}

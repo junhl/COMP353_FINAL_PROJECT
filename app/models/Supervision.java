@@ -28,12 +28,20 @@ public class Supervision extends Model{
 	
     public static Finder<Long,Supervision> find = new Finder<Long,Supervision>(Long.class, Supervision.class); 
 	
-    public static Page<Supervision> page(int page, int pageSize, String sortBy, String order, String filter) {
-        return 
+    public static Page<Supervision> page(int page, int pageSize, String sortBy, String order, Long filter) {
+        if (filter == -1){			
+			return 
             find.where()
-                .ilike("name", "%" + filter + "%")
-                .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
-    }
+		}
+		else{
+			return 
+            find.where()
+                .ilike("supervisor.id", Long.toString(filter))
+                //.orderBy(sortBy + " " + order)
+                .findPagingList(pageSize)
+                .getPage(page);
+		}
+	}
 }
