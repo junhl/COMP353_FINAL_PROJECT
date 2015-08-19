@@ -50,7 +50,8 @@ GET 	/admin/order_content/finish						controllers.AdminController.finish_edit()
 GET		/admin/operating_room/index						controllers.AdminController.operating_room_index()
 GET		/admin/operating_room/schedules/:id				controllers.AdminController.operating_room_schedules(id:Long)
 GET		/admin/operating_room/schedules/new/:id			controllers.AdminController.schedule_new(id:Long)
-POST	/admin/operating_room/schedules/save			controllers.AdminController.save_schedule()
+POST	/admin/operating_room/schedules/save/:id		controllers.AdminController.save_schedule(id:Long)
+
 ##################### DOCTOR SECTION
 GET     /doctor                        					controllers.DoctorController.index()
 
