@@ -128,38 +128,48 @@ public class AdminController extends Controller{
              return badRequest(add_order.render(orderForm));
          }
          orderForm.get().save();
-         return add_order_content(orderForm.get().id);    
+         return edit_order_content(orderForm.get().id, 0, "id", "asc", "");  
     }
-    public static Result edit_order(long id) {
-        return TODO;
+    public static Result delete_order(long id){
+    	Orders.find.ref(id).delete();
+    	flash("success","Computer has been deleted");
+    	return order_index();
     }
     
     //////////SUPPLY ORDER CONTENTS////////////
     public static Result order_content_index(Long id){	
-    	return order_content(0, "id", "asc", Long.toString(id));
+    	return display_order_content(id, 0, "id", "asc","");
     }
-    
-    public static Result order_content(int page, String sortBy, String orderBy, String filter){
+    public static Result display_order_content(long id, int page, String sortBy, String orderBy, String filter){
     	return ok(
-    			order_content.render(OrderContent.page(page,10,sortBy,orderBy,filter),sortBy,orderBy,filter)
+    			display_order_content.render(id,OrderContent.page(page, 10, sortBy, orderBy, filter),sortBy,orderBy,filter)
     			);
     }
     public static Result add_order_content(Long id) {
-    	Form<OrderContent> orderContentForm = form (OrderContent.class);
-   	 	return ok(
-   	 			add_order_content.render(id, orderContentForm)
-   	 			);
+    	Form<OrderContent> contentForm = form(OrderContent.class);
+    	return ok(
+    			add_order_content.render(id, contentForm)
+    			);
     }
-    public static Result save_order_content(){	
-    	Form<OrderContent> orderContentForm = form (OrderContent.class).bindFromRequest();
-    	if(orderContentForm.hasErrors()){
-    		
-    		return TODO;
-    	}
-    	orderContentForm.get().save();
-    	return order_index();
+    public static Result edit_order_content(Long id, int page, String sortBy, String orderBy, String filter){
+    	return ok(
+    			edit_order_content.render(id,OrderContent.page(page, 10, sortBy, orderBy, filter),sortBy,orderBy,filter)
+    			);
+    }
+    public static Result save_order_content(Long id){	
+    	Form<OrderContent> contentForm = form(OrderContent.class).bindFromRequest();
+    	if(contentForm.hasErrors()) {
+            return badRequest(add_order_content.render(id,contentForm));
+        }
+        contentForm.get().save();
+        return edit_order_content(id, 0, "id", "asc", ""); 
     }    
-    
+    public static Result delete_order_content(Long id, Long orderID){
+    	return TODO;
+    }
+    public static Result finish_edit(){
+    	return TODO; 
+    }
     public static Result schedules() {
         return TODO;
     }

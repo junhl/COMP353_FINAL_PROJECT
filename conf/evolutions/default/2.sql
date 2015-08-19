@@ -131,26 +131,24 @@ insert into vendor(name) values ('MEDICAL VENDOR');
 insert into vendor(name) values ('NON-MEDICAL VENDOR VENDOR');
 insert into vendor(name) values ('NUTRITIONAL VENDOR');
 
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(1,1,'MEDICATION TYLENOL',0,0);
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(2,1,'CUTTING TOOLS',0,0);
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(3,1,'DEFIBS',0,0);
-
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(4,2,'STATIONARY',0,0);
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(5,2,'PATIENT ROBES',0,0);
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(6,2,'CLEANING BLEACH',0,0);
-
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(7,3,'FRESH FRUIT',0,0);
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(8,3,'CANNED BEANS',0,0);
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(9,3,'FORKS',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (1,1,'MEDICATION TYLENOL',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (2,1,'CUTTING TOOLS',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (3,1,'DEFIBS',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (4,2,'STATIONARY',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (5,2,'PATIENT ROBES',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (6,2,'CLEANING BLEACH',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (7,3,'FRESH FRUIT',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (8,3,'CANNED BEANS',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (9,3,'FORKS',0,0);
 
 insert into storage_location(name, employee_id) values ('STORE ROOM A', 1);
 insert into storage_location(name, employee_id) values ('STORE ROOM B', 1);
@@ -165,4 +163,16 @@ insert into orders(date) values('2015-08-06');
 insert into orders(date) values('2015-08-07');
 
 insert into delivery_service(name, is_immediate_shipping) values ('PUROLATOR', '1');
+insert into delivery_service(name, is_immediate_shipping) values ('FEDEX', '1');
+
+insert into order_content(order_id,quantity,supply_specific_type_id,storage_location_id,delivery_service_id)
+	values (1, 1, 1, 1, 1);
+insert into order_content(order_id,quantity,supply_specific_type_id,storage_location_id,delivery_service_id)
+	values (1, 3, 2, 1, 1);
+insert into order_content(order_id,quantity,supply_specific_type_id,storage_location_id,delivery_service_id)
+	values (2, 2, 3, 1, 1);
+insert into order_content(order_id,quantity,supply_specific_type_id,storage_location_id,delivery_service_id)
+	values (2, 4, 2, 1, 1);
+insert into order_content(order_id,quantity,supply_specific_type_id,storage_location_id,delivery_service_id)
+	values (2, 6, 4, 1, 1);
     
