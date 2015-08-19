@@ -176,3 +176,20 @@ insert into order_content(order_id,quantity,supply_specific_type_id,storage_loca
 insert into order_content(order_id,quantity,supply_specific_type_id,storage_location_id,delivery_service_id)
 	values (2, 6, 4, 1, 1);
     
+insert into shift(start_date, end_date, employee_id) values ('2015-08-10 10:00:00','2015-08-10 20:00:00', 4);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-11 10:00:00','2015-08-11 20:00:00', 4);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-12 10:00:00','2015-08-12 20:00:00', 4);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-13 10:00:00','2015-08-13 20:00:00', 4);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-14 10:00:00','2015-08-14 20:00:00', 4);
+
+insert into shift(start_date, end_date, employee_id) values ('2015-08-10 10:00:00','2015-08-10 20:00:00', 5);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-11 10:00:00','2015-08-11 20:00:00', 5);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-12 10:00:00','2015-08-12 20:00:00', 5);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-13 10:00:00','2015-08-13 20:00:00', 5);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-14 10:00:00','2015-08-14 20:00:00', 5);
+
+insert into shift(start_date, end_date, employee_id) values ('2015-08-10 10:00:00','2015-08-10 20:00:00', 6);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-11 10:00:00','2015-08-11 20:00:00', 6);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-12 10:00:00','2015-08-12 20:00:00', 6);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-13 10:00:00','2015-08-13 20:00:00', 6);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-14 10:00:00','2015-08-14 20:00:00', 6);

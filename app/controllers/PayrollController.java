@@ -51,12 +51,20 @@ public class PayrollController extends Controller{
     		int hourly_pay = 0;
     		int hourly_increase = 0;
     		int years_increased = 0;
+    		int salary = 0;
     		
     		for (Role r : role.getList()){
     			hourly_pay = r.pay.hourly_base;
+    			salary = r.pay.annual_salary;
     		}
     		
-    		total_pay = hourly_pay * hours_worked;
+    		if (user_role == 3 || user_role == 4) {
+    			total_pay = hourly_pay * hours_worked;
+    		}    		
+    		
+    		else {
+    			total_pay = salary/ 52;    			
+    		}
     		
     		//get a list of shift
     		//calculate info;
