@@ -35,14 +35,16 @@ GET     /admin/order/list								controllers.AdminController.order_index()
 GET 	/admin/order/param_list							controllers.AdminController.order(id:Int ?=0, s ?= "name", o ?= "asc", f ?= "")
 GET		/admin/order/create								controllers.AdminController.add_order()
 POST	/admin/order/save								controllers.AdminController.save_order()
-GET 	/admin/order/:id/edit							controllers.AdminController.edit_order(id:Long)
+GET     /admin/order/:id/delete       					controllers.AdminController.delete_order(id:Long)
 
 ##### SUPPLY ORDER CONTENTS #####
-GET     /admin/order_content/list/:id					controllers.AdminController.order_content_index(id:Long)
-GET 	/admin/order_content/param_list					controllers.AdminController.order_content(id:Int ?=0, s ?= "name", o ?= "asc", f ?= "")
-GET		/admin/order_content/create/:id					controllers.AdminController.add_order_content(id:Long)
-POST	/admin/order_content/create/:id					controllers.AdminController.add_order_content(id:Long)
-POST	/admin/order_content/save						controllers.AdminController.save_order_content()
+GET     /admin/order_content/:id/list					controllers.AdminController.order_content_index(id:Long)
+GET 	/admin/order_content/param_list					controllers.AdminController.display_order_content(id:Long, page:Int ?=0, s ?= "name", o ?= "asc", f ?= "")
+GET		/admin/order_content/:id/create					controllers.AdminController.add_order_content(id:Long)
+GET		/admin/order_content/:id/save					controllers.AdminController.save_order_content(id:Long)
+GET		/admin/order_content/param_list/edit			controllers.AdminController.edit_order_content(id:Long, page:Int ?=0, s ?= "name", o ?= "asc", f ?= "")
+GET    /admin/order_content/param_list/delete     		controllers.AdminController.delete_order_content(id:Long, orderID:Long)
+POST 	/admin/order_content/finish						controllers.AdminController.finish_edit()
 
 ##################### DOCTOR SECTION
 GET     /doctor                        				controllers.DoctorController.index()
