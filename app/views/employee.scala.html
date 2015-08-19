@@ -1,0 +1,67 @@
+@(currentPage: com.avaje.ebean.Page[Employee], currentSortBy: String, currentOrder: String, currentFilter: String) 
+
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.AdminController.service(newPage, sortBy, order, currentFilter)
+    
+}
+
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}>
+       <a href="@link(0, key)">@title</a>
+    </th>
+}
+@main("Welcome to Play") {
+    <div id="back">        
+        <a class="btn success" id="back" href="@routes.AdminController.index()">Back</a>        
+    </div>
+    
+    @if(currentPage.getTotalRowCount == 0) {
+        
+        <div class="well">
+            <em>Nothing to display</em>
+        </div>
+        
+    } else {
+        
+        <table class="computers zebra-striped">
+        
+            <thead>
+                <tr>
+                    @header("name", "Name")
+                    @header("unit.name", "Unit")
+                    @header("role.name", "Role")
+                    @header("id", "Schedule")
+                </tr>
+            </thead>
+            
+            <tbody>
+                @for(employee <- currentPage.getList) {
+                    <tr>
+                        <td><a href="@routes.AdminController.edit_employee(employee.id)">@employee.name</a></td>
+                        <td>@employee.unit.name</td>     
+                        <td>@employee.role.name</td>   
+                        <td><a href="@routes.AdminController.employee_schedule(employee.id)">Schedule</a></td>               
+                    </tr>
+                }
+            </tbody>            
+        </table> 
+    }        
+}

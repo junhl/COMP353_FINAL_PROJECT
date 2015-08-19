@@ -202,4 +202,48 @@ public class AdminController extends Controller{
         scheduleForm.get().save();
         return operating_room_schedules(id);
     }
+    
+    //////////EMPLOYEE////////////
+    
+    public static Result employee_index() {
+        return TODO;
+    }    
+    
+    public static Result edit_employee(long id) {
+        Form<Employee> employeeForm = form(Employee.class).bindFromRequest();
+        if(employeeForm.hasErrors()) {
+            return TODO;
+        }
+        employeeForm.get().save();
+        return operating_room_index();
+    }
+    
+    public static Result employee_schedule(long id) {
+        return TODO;
+    }   
+    
+    public static Result add_employee_schedule(long id) {
+        Form<Employee> form = form(Employee.class);
+        return ok(
+            create_operating_room_schedule.render(id, form)
+        );
+    }  
+    
+    public static Result save_employee_schedule(long id) {
+        Form<Employee> employeeForm = form(Employee.class).bindFromRequest();
+        if(employeeForm.hasErrors()) {
+            return TODO;
+        }
+        employeeForm.get().save();
+        return employee_index();
+    }  
+    
+    //////////TASKS////////////
+    public static Result task_index(){
+    	return TODO;
+    }
+    
+    public static Result add_task(){
+    	return TODO;
+    }
 }
