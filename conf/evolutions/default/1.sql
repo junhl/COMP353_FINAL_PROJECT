@@ -126,6 +126,8 @@ create table role (
 create table schedule (
   id                        bigint auto_increment not null,
   employee_id               bigint,
+  start_date                timestamp,
+  end_date                  timestamp,
   constraint pk_schedule primary key (id))
 ;
 
@@ -133,6 +135,7 @@ create table service (
   id                        bigint auto_increment not null,
   name                      varchar(255),
   unit_id                   bigint,
+  cost                      double,
   constraint pk_service primary key (id))
 ;
 
@@ -187,6 +190,7 @@ create table task (
   employee_id               bigint,
   service_id                bigint,
   shift_id                  bigint,
+  date                      timestamp,
   canceled                  boolean,
   patient_treatment_history_id bigint,
   constraint pk_task primary key (id))

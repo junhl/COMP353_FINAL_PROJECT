@@ -93,8 +93,8 @@ GET     /nurse                     					controllers.NurseController.index()
 GET     /nurseshiftsupervisor           			controllers.NurseShiftSupervisorController.index()
 
 ##################### INTERN SECTION
-GET     /internresident         					controllers.InternResidentController.index()
-
+GET     /internresident         						controllers.InternResidentController.index()
+GET		/internresident/schedule						controllers.InternResidentController.schedule()
 
 ##################### REPORT SECTION
 GET		/report/service_provided					controllers.ReportController.service_provided_report()
