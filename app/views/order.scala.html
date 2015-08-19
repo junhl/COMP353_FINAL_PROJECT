@@ -29,8 +29,11 @@
     </th>
 }
 @main("Welcome to Play") {
-    <div>        
-        <a class="btn success" href="@routes.AdminController.add_order()">Place an order</a>        
+    <div id="actions">        
+        <a class="btn success" id="add" href="@routes.AdminController.add_order()">Place an order</a>        
+    </div>
+    <div id="back">        
+        <a class="btn success" id="back" href="@routes.AdminController.index()">Back</a>        
     </div>
     @if(currentPage.getTotalRowCount == 0) {
         
@@ -44,7 +47,7 @@
         
             <thead>
                 <tr>
-                    @header("name", "Orders")
+                    @header("name", "Order Number")
                     @header("date", "Date")
                 </tr>
             </thead>

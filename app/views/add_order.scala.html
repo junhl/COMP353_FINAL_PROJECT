@@ -7,14 +7,13 @@
 <h1>Add an order</h1>
     
     @form(routes.AdminController.save_order()) {
-        
         <fieldset>
      		@inputText(orderForm("Date"), '_label -> "Date")
      		
         </fieldset>
         
         <div class="actions">
-            <input type="submit" value="Add this order" class="btn"> or 
+            <input type="submit" value="Add this order" class="btn"> 
             <a href="@routes.AdminController.order_index()" class="btn">Cancel</a> 
         </div>       
     }    
