@@ -49,13 +49,17 @@
             <thead>
                 <tr>
                     @header("name", "SupplySpecificType")
+                    @header("supply_sub_type.name", "Supply Sub Type")
+                    @header("supply_type.name", "Supply Type")
                 </tr>
             </thead>
             
             <tbody>
                 @for(supply <- currentPage.getList) {
                     <tr>
-                        <td>@supply.name</td>                      
+                        <td>@supply.name</td>       
+                        <td>@supply.supply_sub_type.name</td>   
+                        <td>@supply.supply_sub_type.supply_type.name</td>                  
                     </tr>
                 }
             </tbody>            
