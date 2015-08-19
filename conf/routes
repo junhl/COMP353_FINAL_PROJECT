@@ -96,6 +96,14 @@ GET     /nurseshiftsupervisor           			controllers.NurseShiftSupervisorContr
 GET     /internresident         					controllers.InternResidentController.index()
 
 
+##################### REPORT SECTION
+GET		/report/service_provided					controllers.ReportController.service_provided_report()
+GET		/report/cost_usage_of_supplies				controllers.ReportController.cost_usage_supplies_report()
+GET		/report/service_provided_doctor				controllers.ReportController.service_provided_doctor_report()
+
+
+##################### PAYROLL SECTION
+GET		/payroll												controllers.PayrollController.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

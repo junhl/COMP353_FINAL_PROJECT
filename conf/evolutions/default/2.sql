@@ -1,31 +1,31 @@
 
 # --- !Ups
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('0', 125000, 1, null, null, null, null, null);
+values('0', 125000, 1, 0, 0, 0, 0, 0);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('0', 78500, 1, null, null, null, null, null);
+values('0', 78500, 1, 0, 0, 0, 0, 0);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('0', 0, 0, null, null, null, null, null);
+values('0', 0, 0, 0, 0, 0, 0, 0);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('1', null, null, 27.25, 1.5, 5, 1.25, 36);
+values('1', 0, 0, 27.25, 1.5, 5, 1.25, 36);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('1', null, null, 24.50, 1.5, 5, 1.25, 36);
+values('1', 0, 0, 24.50, 1.5, 5, 1.25, 36);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('0', 40000, 0, null, null, null, null, null);
+values('0', 40000, 0, 0, 0, 0, 0, 0);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('0', 40000, 5, null, null, null, null, null);
+values('0', 40000, 5, 0, 0, 0, 0, 0);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('1', null, null, 16, 1.25, 8, 1.5, 37.5);
+values('1', 0, 0, 16, 1.25, 8, 1.5, 37.5);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('1', null, null, 16, 1.25, 8, 1.5, 37.5);
+values('1', 0, 0, 16, 1.25, 8, 1.5, 37.5);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('1', null, null, 16, 1.25, 8, 1.5, 37.5);
+values('1', 0, 0, 16, 1.25, 8, 1.5, 37.5);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('1', null, null, 16, 1.25, 8, 1.5, 37.5);
+values('1', 0, 0, 16, 1.25, 8, 1.5, 37.5);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('1', null, null, 16, 1.25, 8, 1.5, 37.5);
+values('1', 0, 0, 16, 1.25, 8, 1.5, 37.5);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('0', 98000, 1, null, null, null, null, null);
+values('0', 98000, 1, 0, 0, 0, 0, 0);
 
 insert into unit (name) values ('PALLIATIVE CARE UNIT'); --1
 insert into unit (name) values ('CHILDREN''S UNIT'); -- 2

@@ -1,0 +1,174 @@
+@(employeePage: com.avaje.ebean.Page[Employee], rolePage: com.avaje.ebean.Page[Role], currentSortBy: String, currentOrder: String, currentFilter: String) 
+
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.PayrollController.index()
+    
+}
+
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}>
+       <a href="@link(0, key)">@title</a>
+    </th>
+}
+@main("Welcome to Play") {
+
+    @if(employeePage.getTotalRowCount == 0) {
+        
+        <div class="well">
+            <em>Nothing to display</em>
+        </div>
+        
+    } else {
+        <h2>Employee</h2>
+        <table class="computers zebra-striped">        
+            <thead>
+                <tr>
+                    @header("name", "Employee Name")
+                    @header("unit.name", "Unit")
+                   	@header("role.name", "Role")
+                </tr>
+            </thead>            
+            <tbody>
+                @for(employee <- employeePage.getList) {
+                    <tr>
+                        <td>@employee.name</td>
+                        <td>@employee.unit.name</td>  
+                        <td>@employee.role.name</td>                        
+                    </tr>
+                }
+            </tbody>            
+        </table> 
+        
+       <h2>Pay Details</h2>
+       @for(role <- rolePage.getList) {
+        <table class="computers zebra-striped">        
+            <thead>
+                <tr>
+                	@header("name", "Position Name")
+                	
+                	@if(role.pay.salary_or_hourly) {
+                	@header("pay.hourly_base", "Hourly Wage")
+					@header("pay.hourly_increase", "Hourly Increase")
+					@header("pay.hourly_increase_experience_years", "Years of Experienced Needed For Increase")
+					@header("pay.overtime_rate", "Overtime Rate x Salary")
+					@header("pay.maximum_weekly_hours", "Maximum Overtime Allowed")           	
+                	} else {
+					@header("pay.annual_salary", "Salary")
+					@header("pay.annual_salary_increase_percentage", "Salary Increase %")
+					}
+
+                </tr>
+            </thead>            
+            <tbody>
+                    <tr>
+                        <td>@role.name</td>
+                    	@if(role.pay.salary_or_hourly) {
+                    	<td>@role.pay.hourly_base</td>
+                        <td>@role.pay.hourly_increase</td>
+                        <td>@role.pay.hourly_increase_experience_years</td>
+                        <td>@role.pay.overtime_rate</td>
+                        <td>@role.pay.maximum_weekly_hours</td>               	
+                    	} else {
+                        <td>@role.pay.annual_salary</td>
+                        <td>@role.pay.annual_salary_increase_percentage</td>
+               			}
+                    </tr>
+                }
+            </tbody>            
+        </table> 
+        
+       <h2>Pay Details</h2>
+       @for(role <- rolePage.getList) {
+        <table class="computers zebra-striped">        
+            <thead>
+                <tr>
+                	@header("name", "Position Name")
+                	
+                	@if(role.pay.salary_or_hourly) {
+                	@header("pay.hourly_base", "Hourly Wage")
+					@header("pay.hourly_increase", "Hourly Increase")
+					@header("pay.hourly_increase_experience_years", "Years of Experienced Needed For Increase")
+					@header("pay.overtime_rate", "Overtime Rate x Salary")
+					@header("pay.maximum_weekly_hours", "Maximum Overtime Allowed")           	
+                	} else {
+					@header("pay.annual_salary", "Salary")
+					@header("pay.annual_salary_increase_percentage", "Salary Increase %")
+					}
+
+                </tr>
+            </thead>            
+            <tbody>
+                    <tr>
+                        <td>@role.name</td>
+                    	@if(role.pay.salary_or_hourly) {
+                    	<td>@role.pay.hourly_base</td>
+                        <td>@role.pay.hourly_increase</td>
+                        <td>@role.pay.hourly_increase_experience_years</td>
+                        <td>@role.pay.overtime_rate</td>
+                        <td>@role.pay.maximum_weekly_hours</td>               	
+                    	} else {
+                        <td>@role.pay.annual_salary</td>
+                        <td>@role.pay.annual_salary_increase_percentage</td>
+               			}
+                    </tr>
+                }
+            </tbody>            
+        </table> 
+        
+       <h2>Final Pay</h2>
+       @for(role <- rolePage.getList) {
+        <table class="computers zebra-striped">        
+            <thead>
+                <tr>
+                	@header("name", "Position Name")
+                	
+                	@if(role.pay.salary_or_hourly) {
+                	@header("pay.hourly_base", "Hourly Wage")
+					@header("pay.hourly_increase", "Hourly Increase")
+					@header("pay.hourly_increase_experience_years", "Years of Experienced Needed For Increase")
+					@header("pay.overtime_rate", "Overtime Rate x Salary")
+					@header("pay.maximum_weekly_hours", "Maximum Overtime Allowed")           	
+                	} else {
+					@header("pay.annual_salary", "Salary")
+					@header("pay.annual_salary_increase_percentage", "Salary Increase %")
+					}
+
+                </tr>
+            </thead>            
+            <tbody>
+                    <tr>
+                        <td>@role.name</td>
+                    	@if(role.pay.salary_or_hourly) {
+                    	<td>@role.pay.hourly_base</td>
+                        <td>@role.pay.hourly_increase</td>
+                        <td>@role.pay.hourly_increase_experience_years</td>
+                        <td>@role.pay.overtime_rate</td>
+                        <td>@role.pay.maximum_weekly_hours</td>               	
+                    	} else {
+                        <td>@role.pay.annual_salary</td>
+                        <td>@role.pay.annual_salary_increase_percentage</td>
+               			}
+                    </tr>
+                }
+            </tbody>            
+        </table> 
+    }        
+}
