@@ -194,12 +194,12 @@ public class AdminController extends Controller{
         );
     }
     
-    public static Result save_schedule() {
+    public static Result save_schedule(long id) {
         Form<OperatingRoomSchedule> scheduleForm = form(OperatingRoomSchedule.class).bindFromRequest();
         if(scheduleForm.hasErrors()) {
-            return TODO;
+            return badRequest(create_operating_room_schedule.render(id,scheduleForm));
         }
         scheduleForm.get().save();
-        return operating_room_index();
+        return operating_room_schedules(id);
     }
 }

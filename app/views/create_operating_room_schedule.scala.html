@@ -6,7 +6,7 @@
 @main("Welcome to Play") {
 <h1>Add a service</h1>
     
-    @form(routes.AdminController.save_schedule()) {
+    @form(routes.AdminController.save_schedule(id)) {
         
         <fieldset>
         
@@ -40,7 +40,7 @@
         
         <div class="actions">
             <input type="submit" value="Create this service" class="btn"> or 
-            <a href="@routes.AdminController.service_index()" class="btn">Cancel</a> 
+            <a href="@routes.AdminController.operating_room_schedules(id)" class="btn">Cancel</a> 
         </div>       
     }    
 }
