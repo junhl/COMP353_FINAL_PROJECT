@@ -1,4 +1,4 @@
-@(currentPage: com.avaje.ebean.Page[Service], currentSortBy: String, currentOrder: String, currentFilter: String) 
+@(currentPage: com.avaje.ebean.Page[OperatingRooms], currentSortBy: String, currentOrder: String, currentFilter: String) 
 
 @link(newPage:Int, newSortBy:String) = @{
     
@@ -29,9 +29,6 @@
     </th>
 }
 @main("Welcome to Play") {
-    <div id="actions">        
-        <a class="btn success" id="add" href="@routes.AdminController.create_service()">Add a new service</a>        
-    </div>
     <div id="back">        
         <a class="btn success" id="back" href="@routes.AdminController.index()">Back</a>        
     </div>
@@ -48,18 +45,17 @@
         
             <thead>
                 <tr>
-                    @header("name", "Service")
-                    @header("unit.name", "Unit Name")
-                    @header("cost", "Cost")
+                    @header("name", "Room Name")
+                    @header("id", "Check Schedule")
                 </tr>
             </thead>
             
             <tbody>
-                @for(service <- currentPage.getList) {
+                @for(operatingroom <- currentPage.getList) {
                     <tr>
-                        <td><a href="@routes.AdminController.edit_service(service.id)">@service.name</a></td>
-                        <td>@service.unit.name</td>     
-                        <td>@service.cost</td>                    
+                        <td>@operatingroom.name</td>   
+                        <td><a href="@routes.AdminController.operating_room_schedules(operatingroom.id)">@operatingroom.id</a></td>
+                   
                     </tr>
                 }
             </tbody>            

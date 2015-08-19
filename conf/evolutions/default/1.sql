@@ -45,6 +45,9 @@ create table operating_room_schedule (
   id                        bigint auto_increment not null,
   task_id                   bigint,
   operating_room_id         bigint,
+  start                     timestamp,
+  start_hour                integer,
+  end_hour                  integer,
   constraint pk_operating_room_schedule primary key (id))
 ;
 

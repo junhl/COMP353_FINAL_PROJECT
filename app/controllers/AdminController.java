@@ -159,26 +159,46 @@ public class AdminController extends Controller{
     public static Result save_order_content(Long id){	
     	Form<OrderContent> contentForm = form(OrderContent.class).bindFromRequest();
     	if(contentForm.hasErrors()) {
-            return badRequest(add_order_content.render(id,contentForm));
+    		return TODO;
+            //return badRequest(add_order_content.render(id,contentForm));
         }
         contentForm.get().save();
         return edit_order_content(id, 0, "id", "asc", ""); 
     }    
+    
     public static Result delete_order_content(Long id, Long orderID){
     	return TODO;
     }
+    
     public static Result finish_edit(){
     	return TODO; 
     }
-    public static Result schedules() {
-        return TODO;
+    
+    public static Result operating_room_index() {
+        return ok( //ok is to display
+        		operatingroom.render(OperatingRooms.page(0, 100, "id", "id", ""), "", "", "")
+                );
     }
     
-    public static Result report_unit_service() {
-        return TODO;
+    public static Result operating_room_schedules(long id) {
+        return ok( //ok is to display
+        		operatingroom_schedules.render(id, OperatingRoomSchedule.page(0, 100, "id", "id", Long.toString(id)), "", "", "")
+                );
     }
     
-    public static Result report_doctor_service() {
-        return TODO;
+    public static Result schedule_new(long id) {
+        Form<OperatingRoomSchedule> form = form(OperatingRoomSchedule.class);
+        return ok(
+            create_operating_room_schedule.render(id, form)
+        );
+    }
+    
+    public static Result save_schedule() {
+        Form<OperatingRoomSchedule> scheduleForm = form(OperatingRoomSchedule.class).bindFromRequest();
+        if(scheduleForm.hasErrors()) {
+            return TODO;
+        }
+        scheduleForm.get().save();
+        return operating_room_index();
     }
 }
