@@ -20,7 +20,6 @@ public class OrderContent extends Model{
 	@Constraints.Required
 	public Orders order;
 	
-	@Constraints.Required
 	public Long quantity;
 	
 	@ManyToOne
@@ -38,8 +37,16 @@ public class OrderContent extends Model{
     public static Model.Finder<Long,OrderContent> find = new Model.Finder<Long,OrderContent>(Long.class, OrderContent.class);
     
     public static Page<OrderContent> page(int page, int pageSize, String sortBy, String order, String filter) {
+    	if (filter == ""){
+            return 
+                    find.where()
+                        .orderBy(sortBy + " " + order)
+                        .findPagingList(pageSize)
+                        .getPage(page);    		
+    	}
         return 
             find.where()
+            	.ilike("order.id", filter)
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);

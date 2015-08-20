@@ -19,7 +19,7 @@
     }
     
     // Generate the link
-    routes.AdminController.order_content_index()
+    routes.AdminController.order_content_index(1)
     
 }
 
@@ -30,6 +30,9 @@
 }
 @main("Welcome to Play") {
     <div id="actions">               
+    </div>
+    <div>        
+        <a class="btn success" href="@routes.AdminController.add_order_content(0)">Add Order Content</a>        
     </div>
     
     @if(currentPage.getTotalRowCount == 0) {

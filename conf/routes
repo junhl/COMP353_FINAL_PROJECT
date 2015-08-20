@@ -38,8 +38,9 @@ POST	/admin/order/save								controllers.AdminController.save_order()
 GET 	/admin/order/:id/edit							controllers.AdminController.edit_order(id:Long)
 
 ##### SUPPLY ORDER CONTENTS #####
-GET     /admin/order_content/list						controllers.AdminController.order_content_index()
+GET     /admin/order_content/list/:id					controllers.AdminController.order_content_index(id:Long)
 GET 	/admin/order_content/param_list					controllers.AdminController.order_content(id:Int ?=0, s ?= "name", o ?= "asc", f ?= "")
+GET		/admin/order_content/create/:id					controllers.AdminController.add_order_content(id:Long)
 POST	/admin/order_content/create/:id					controllers.AdminController.add_order_content(id:Long)
 POST	/admin/order_content/save						controllers.AdminController.save_order_content()
 
