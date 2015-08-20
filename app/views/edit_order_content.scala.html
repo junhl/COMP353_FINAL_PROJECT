@@ -33,9 +33,6 @@
     <div id="back">        
         <a class="btn success" id="back" href="@routes.AdminController.delete_order(id)">Cancel</a>        
     </div>
-    <div id="action">        
-        <a class="btn success" id="finish" href="@routes.AdminController.finish_edit()">Place Order</a>        
-    </div>
     
 	<table class="computers zebra-striped">    
 		<thead>
@@ -64,4 +61,8 @@
         	}
    		</tbody>            
 	</table>      
+	
+    <div id="action">        
+        <a class="btn success" id="finish" href="@routes.AdminController.finish_edit()">Place Order</a>        
+    </div>
 }

@@ -14,7 +14,7 @@ public class InternResidentController extends Controller{
     
     public static Result schedule(){
     	return ok(
-    			internResident_schedule.render(Shift.page(0, 10, "id", "asc", Long.parseLong(session("employee_id"))))
+    			internResident_schedule.render(Shift.page(0, 10, "id", "asc", ""))
     	);
     }
 }
