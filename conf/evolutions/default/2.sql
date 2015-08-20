@@ -1,4 +1,3 @@
-
 # --- !Ups
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
 values('0', 125000, 1, 0, 0, 0, 0, 0);
@@ -201,6 +200,5 @@ insert into task(name, employee_id, service_id, shift_id, canceled, patient_trea
 insert into task(name, employee_id, service_id, shift_id, canceled, patient_treatment_history_id) values ('PROSTATE EXAM', 5, 2, 3, '0', 6);
 insert into task(name, employee_id, service_id, shift_id, canceled, patient_treatment_history_id) values ('EUTHANASIA', 5, 3, 3, '0', 4);
 
-
 insert into delivery_service(name, is_immediate_shipping) values ('PUROLATOR', '1');
-    
+

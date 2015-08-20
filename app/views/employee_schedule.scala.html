@@ -40,21 +40,21 @@
     <table class="computers zebra-striped">  
         <thead>
             <tr>
-                @header("id", "Shift ID")
                 @header("employee", "Employee")
-                @header("start_date", "Start time")
-                @header("end_date", "End Time")
+                @header("start_time", "Start Time")
+                @header("end_time", "End Time")
             </tr>
         </thead>
             
         <tbody>
             @for(shift <- currentPage.getList){
-            	//@if(shift.employee.id == empID){
-            		<td>@shift.id</td>
+            	@if(shift.employee.id == empID){
+            	<tr>
             		<td>@shift.employee.id</td>
             		<td>@shift.start_date</td>
             		<td>@shift.end_date</td>
-            	//}
+            	</tr>
+            	}
             }
     	</tbody>            
     </table>           

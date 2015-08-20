@@ -18,7 +18,7 @@ public class Shift extends Model{
 	
 	@Constraints.Required
 	public Date start_date;
-	
+
 	@Constraints.Required
 	public Date end_date;
 	
