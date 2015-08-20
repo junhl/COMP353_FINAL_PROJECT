@@ -5,7 +5,7 @@
     @main("Welcome to Play") {
 	<h1>Add a new task</h1>
     
-    @form(routes.DoctorController.save_task()) {
+    @form(routes.NurseShiftSupervisorController.save_task()) {
         
         <fieldset>
         	@inputText(taskForm("name"), '_label -> "Name")

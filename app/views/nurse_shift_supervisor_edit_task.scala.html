@@ -4,7 +4,7 @@
   
     @main("Welcome to Play") {<h1>Cancelling a task</h1>
     
-    @form(routes.DoctorController.update_task(id)) {
+    @form(routes.NurseShiftSupervisorController.update_task(id)) {
         
         <fieldset>
         	@inputText(taskForm("name"), '_label -> "Name")
@@ -31,7 +31,7 @@
         </fieldset>
                
     }
-	@form(routes.DoctorController.delete_task(id), 'class -> "topRight") {
+	@form(routes.NurseShiftSupervisorController.delete_task(id), 'class -> "topRight") {
         <input type="submit" value="Delete" class="btn danger">
     } 	
 }
