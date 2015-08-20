@@ -5,9 +5,10 @@
     @main("Welcome to Play") {
 	<h1>Add a new task</h1>
     
-    @form(routes.DoctorController.save_task(history_id)) {
+    @form(routes.DoctorController.save_task()) {
         
         <fieldset>
+        	@inputText(taskForm("name"), '_label -> "Name")
 			@select(
                 taskForm("service.id"), 
                 options(Service.options), 
@@ -21,11 +22,17 @@
                 '_showConstraints -> false
             )
 			@inputText(taskForm("date"), '_label -> "Date")
-			@inputText(taskForm("canceled"), '_label -> "Cancel")
+			@checkbox(field = taskForm("canceled"), '_label -> "Cancel")
 			@select(
                 taskForm("patient_treatment_history.id"), 
                 options(PatientTreatmentHistory.find_the_id(history_id)), 
-                '_label -> "PatientTreatmentHistoryID",
+                '_label -> "Treatment History ID",
+                '_showConstraints -> false
+            )
+           	@select(
+                taskForm("shift.id"), 
+                options(Shift.options), 
+                '_label -> "Shift ID",
                 '_showConstraints -> false
             )
             

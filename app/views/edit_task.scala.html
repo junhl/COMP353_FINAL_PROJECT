@@ -7,13 +7,31 @@
     @form(routes.DoctorController.update_task(id)) {
         
         <fieldset>
-			@inputText(taskForm("name"), '_label -> "Summary or Reason")
-			@inputText(taskForm("canceled"), '_label -> "Cancel")
+        	@inputText(taskForm("name"), '_label -> "Name")
+			@select(
+                taskForm("service.id"), 
+                options(Service.options), 
+                '_label -> "ServiceID",
+                '_showConstraints -> false
+            )
+			@select(
+                taskForm("employee.id"), 
+                options(Employee.options), 
+                '_label -> "EmployeeID",
+                '_showConstraints -> false
+            )
+			@inputText(taskForm("date"), '_label -> "Date")
+			@checkbox(field = taskForm("canceled"), '_label -> "Cancel")
+           	@select(
+                taskForm("shift.id"), 
+                options(Shift.options), 
+                '_label -> "Shift ID",
+                '_showConstraints -> false
+            )
         </fieldset>
-        
-        <div class="actions">
-            <input type="submit" value="Finish Edit" class="btn">
-                
-        </div>        
-    }   
+               
+    }
+	@form(routes.DoctorController.delete_task(id), 'class -> "topRight") {
+        <input type="submit" value="Delete" class="btn danger">
+    } 	
 }

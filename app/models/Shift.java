@@ -36,4 +36,12 @@ public class Shift extends Model{
                 .findPagingList(pageSize)
                 .getPage(page);
     }
+    
+    public static Map<String,String> options() {
+        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
+        for(Shift c: Shift.find.findList()) {
+            options.put(c.id.toString(), c.id.toString());
+        }
+        return options;
+    }
 }
