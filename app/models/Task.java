@@ -76,5 +76,11 @@ public class Task extends Model{
                 .getPage(0);
 
 	}
+	public static Map<String,String> find_the_id(long id) {
+        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
+		Task p = Task.find.byId(id);
+        options.put(p.id.toString(), p.id.toString());     
+        return options;
+    }
 
 }

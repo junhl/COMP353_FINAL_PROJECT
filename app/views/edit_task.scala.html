@@ -7,13 +7,18 @@
     @form(routes.DoctorController.update_task(id)) {
         
         <fieldset>
-			@inputText(taskForm("name"), '_label -> "Summary or Reason")
+			@select(
+                taskForm("task.id"), 
+                options(Task.find_the_id(id)), 
+                '_label -> "TaskID",
+                '_showConstraints -> false
+            )
+			@inputText(taskForm("name"), '_label -> "Summary")
 			@inputText(taskForm("canceled"), '_label -> "Cancel")
         </fieldset>
-        
-        <div class="actions">
-            <input type="submit" value="Finish Edit" class="btn">
-                
-        </div>        
-    }   
+               
+    }
+	@form(routes.DoctorController.delete_task(id), 'class -> "topRight") {
+        <input type="submit" value="Delete" class="btn danger">
+    } 	
 }

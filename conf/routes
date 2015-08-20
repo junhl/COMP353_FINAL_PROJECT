@@ -85,11 +85,13 @@ POST	/doctor/patient_treatment_history				controllers.DoctorController.save_pati
 
 GET		/doctor/supervision								controllers.DoctorController.supervision(id:Int ?= 0, s ?= "name", o ?= "asc", f:Long)
 
+GET     /doctor/task			                 		controllers.DoctorController.task_index()
 GET		/doctor/task									controllers.DoctorController.task(id:Int ?= 0, s ?= "name", o ?= "asc", f:Long)
 GET		/doctor/task/new								controllers.DoctorController.add_task(history_id:Long)
-POST	/doctor/task									controllers.DoctorController.save_task(history_id:Long)
+POST	/doctor/task									controllers.DoctorController.save_task()
 GET		/doctor/task/:id								controllers.DoctorController.edit_task(id:Long)
-GET		/doctor/task/:id								controllers.DoctorController.update_task(id:Long)
+POST	/doctor/task/:id								controllers.DoctorController.update_task(id:Long)
+POST    /doctor/task/:id/delete       					controllers.DoctorController.delete_task(id:Long)
 
 
 ##################### NURSE SECTION
