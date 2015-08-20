@@ -8,9 +8,16 @@
     
     @form(routes.AdminController.save_shift(empID)) {
         <fieldset>
-     		@inputText(shiftForm("start_date"), '_label -> "Start")
-     		
-     		@inputText(shiftForm("end_date"), '_label -> "End")
+        	@select(
+                shiftForm("employee.name"), 
+                options(Employee.get_employee(empID)), 
+                '_label -> "Employee",
+                '_showConstraints -> false
+            )
+            
+     		@inputText(shiftForm("start_date"), '_label -> "Start time")
+     		     	
+     		@inputText(shiftForm("end_date"), '_label -> "End time")
      		
         </fieldset>
         

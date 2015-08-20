@@ -60,4 +60,11 @@ public class Employee extends Model{
         }
         return options;
     }
+	public static Map<String,String> get_employee(long id) {
+        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
+        for(Employee c: Employee.find.where().ilike("id", Long.toString(id)).orderBy("name").findList()) {
+            options.put(c.id.toString(), c.name);
+        }
+        return options;
+    }
 }
