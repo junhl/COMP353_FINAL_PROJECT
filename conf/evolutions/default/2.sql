@@ -200,5 +200,5 @@ insert into task(name, employee_id, service_id, shift_id, canceled, patient_trea
 insert into task(name, employee_id, service_id, shift_id, canceled, patient_treatment_history_id) values ('PROSTATE EXAM', 5, 2, 3, '0', 6);
 insert into task(name, employee_id, service_id, shift_id, canceled, patient_treatment_history_id) values ('EUTHANASIA', 5, 3, 3, '0', 4);
 
-
 insert into delivery_service(name, is_immediate_shipping) values ('PUROLATOR', '1');
+
