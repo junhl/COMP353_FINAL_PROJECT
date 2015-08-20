@@ -172,9 +172,11 @@ public class DoctorController extends Controller{
         PatientAssignment.find.ref(id).delete();
         return patient_assignment_index();
     }
+	
+	
 	////////////////////////////////////////////////////////////////////////////////////////////////patient treatment history
 	public static Result patient_treatment_history_index() {
-    	return patient_treatment_history(0, "name", "asc", Long.valueOf(-1));
+    	return patient_treatment_history(0, "name", "asc", Long.parseLong(session("employee_id")));
     }
 	
 	public static Result patient_treatment_history(int page, String sortBy, String order, Long filter) {
@@ -222,6 +224,11 @@ public class DoctorController extends Controller{
     }
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////task
+	public static Result task_index() {
+    	return task(0, "name", "asc", Long.parseLong(session("employee_id")));
+
+    }
+	
 	public static Result task(int page, String sortBy, String order, Long filter) {
         return ok(
         		task.render(Task.page(page, 10, sortBy, order, filter),sortBy, order, filter)
@@ -235,15 +242,12 @@ public class DoctorController extends Controller{
         );
     }
 	
-	public static Result save_task(Long history_id) {
+	public static Result save_task() {
         Form<Task> taskForm = form(Task.class).bindFromRequest();
-        if(taskForm.hasErrors()) {
-            return badRequest(add_task.render(history_id, taskForm));
-        }
+		
         taskForm.get().save();
-        return task(0, "name", "asc", Long.parseLong(session("employee_id")));
+        return task_index();
     }
-	
 	
 	public static Result edit_task(long id){ // this id is taskID to edit
         Form<Task> taskForm = form(Task.class).fill(
@@ -253,11 +257,14 @@ public class DoctorController extends Controller{
                 edit_task.render(id, taskForm)
             );
     }
-	
 	public static Result update_task(long id) {
         Form<Task> taskForm = form(Task.class).bindFromRequest();
-        taskForm.get().update(id);
-        return task(0, "name", "asc", Long.parseLong(session("employee_id")));
+        		
+		taskForm.get().update(id);
+        return task_index();
     }
-	
+	public static Result delete_task(long id) {
+        Task.find.ref(id).delete();
+        return task_index();
+    }
 }
