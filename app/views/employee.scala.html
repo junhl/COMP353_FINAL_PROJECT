@@ -55,10 +55,10 @@
             <tbody>
                 @for(employee <- currentPage.getList) {
                     <tr>
-                        <td><a href="@routes.AdminController.edit_employee(employee.id)">@employee.name</a></td>
+                        <td>@employee.name</td>
                         <td>@employee.unit.name</td>     
                         <td>@employee.role.name</td>   
-                        <td><a href="@routes.AdminController.employee_schedule(employee.id)">Schedule</a></td>               
+                        <td>Schedule</td>               
                     </tr>
                 }
             </tbody>            

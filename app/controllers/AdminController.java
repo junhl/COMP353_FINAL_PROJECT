@@ -225,7 +225,7 @@ public class AdminController extends Controller{
     public static Result add_employee_schedule(long id) {
         Form<Employee> form = form(Employee.class);
         return ok(
-            create_operating_room_schedule.render(id, form)
+            //create_operating_room_schedule.render(id, form)
         );
     }  
     

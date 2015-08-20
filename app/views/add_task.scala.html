@@ -21,7 +21,8 @@
                 '_showConstraints -> false
             )
 			@inputText(taskForm("date"), '_label -> "Date")
-			@inputText(taskForm("canceled"), '_label -> "Cancel")
+			@inputText(taskForm("shift.id"), '_label -> "Shift")
+			@checkbox(field = taskForm("canceled"), '_label -> "Cancel")
 			@select(
                 taskForm("patient_treatment_history.id"), 
                 options(PatientTreatmentHistory.find_the_id(history_id)), 
