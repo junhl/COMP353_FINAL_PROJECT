@@ -1,4 +1,4 @@
-@(currentPage: com.avaje.ebean.Page[OrderContent], currentSortBy: String, currentOrder: String, currentFilter: String) 
+@(operatingroom_id: Long, currentPage: com.avaje.ebean.Page[OperatingRoomSchedule], currentSortBy: String, currentOrder: String, currentFilter: String) 
 
 @link(newPage:Int, newSortBy:String) = @{
     
@@ -19,7 +19,7 @@
     }
     
     // Generate the link
-    routes.AdminController.order_content_index(1)
+    routes.AdminController.service(newPage, sortBy, order, currentFilter)
     
 }
 
@@ -29,10 +29,11 @@
     </th>
 }
 @main("Welcome to Play") {
-    <div id="actions">               
+    <div id="back">        
+        <a class="btn success" id="back" href="@routes.AdminController.operating_room_index()">Done</a>        
     </div>
     <div>        
-        <a class="btn success" href="@routes.AdminController.add_order_content(0)">Add Order Content</a>        
+        <a class="btn success" href="@routes.AdminController.schedule_new(operatingroom_id)">Schedule New</a>        
     </div>
     
     @if(currentPage.getTotalRowCount == 0) {
@@ -47,24 +48,22 @@
         
             <thead>
                 <tr>
-                    @header("name", "")
-                    @header("order.id", "Order ID")
-                    @header("supply_specific_type.name", "Supply Type")
-                    @header("storage_location.name", "Storage Location")
-                    @header("delivery_service.name", "Delivery Service")
-                    @header("quantity", "Quantity")
+                    @header("operating_room.name", "Room Name")
+                    @header("task.service.name", "Service Name")
+                   	@header("start", "Start Date")
+                    @header("start_hour", "Start Hour")
+                    @header("end_hour", "End Hour")
                 </tr>
             </thead>
             
             <tbody>
-                @for(order_content <- currentPage.getList) {
-                    <tr>            
-                  		<td>@order_content.id</td>
-                  		<td>@order_content.order.id</td>
-                  		<td>@order_content.supply_specific_type.name</td>
-                  		<td>@order_content.storage_location.name</td>
-                  		<td>@order_content.delivery_service.name</td>
-                  		<td>@order_content.quantity</td>  
+                @for(operatingroomschedule <- currentPage.getList) {
+                    <tr>
+						<td>@operatingroomschedule.operating_room.name</td>
+						<td>@operatingroomschedule.task.service.name</td>
+						<td>@operatingroomschedule.start</td>
+						<td>@operatingroomschedule.start_hour</td>
+						<td>@operatingroomschedule.end_hour</td>
                     </tr>
                 }
             </tbody>            

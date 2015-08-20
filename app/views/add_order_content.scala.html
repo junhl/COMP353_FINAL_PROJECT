@@ -1,53 +1,50 @@
-@(id: Long, orderContentForm: Form[OrderContent])
+@(id: Long, contentForm: Form[OrderContent])
 
 @import helper._
 
 
 @main("Welcome to Play") {
-<h1>Add order contents</h1>
+<h1>Add supplies to order</h1>
     
-    @form(routes.AdminController.save_order_content()) {        
+    @form(routes.AdminController.save_order_content(id)) {
         <fieldset>
         	@select(
-                orderContentForm("order.id"), 
+                contentForm("order.id"), 
                 options(Orders.options), 
-                '_label -> "Order",
+                '_label -> "Order ID",
                 '_showConstraints -> false
             )
-            @select(
-                orderContentForm("supply_specific_type.id"), 
+            
+     		@inputText(
+           		field = contentForm("quantity"),
+           		args = '_label -> "Quantity", 'placeholder -> 0
+      		)
+     		
+     		@select(
+                contentForm("supply_specific_type.id"), 
                 options(SupplySpecificType.options), 
-                '_label -> "Supply Specific Type",
+                '_label -> "SupplySpecificType",
                 '_showConstraints -> false
             )
+            
             @select(
-                orderContentForm("storage_location.id"), 
+                contentForm("storage_location.id"), 
                 options(StorageLocation.options), 
                 '_label -> "Storage Location",
                 '_showConstraints -> false
             )
+            
             @select(
-                orderContentForm("delivery_service.id"), 
+                contentForm("delivery_service.id"), 
                 options(DeliveryService.options), 
                 '_label -> "Delivery Service",
                 '_showConstraints -> false
             )
-            @inputText(
-            field = orderContentForm("quantity"),
-            args = '_label -> "Quantity", 'placeholder -> 0
-        )
-     		
         </fieldset>
         
         <div class="actions">
-            <input type="submit" value="Add this content" class="btn"> or 
-            <a href="@routes.AdminController.order_index()" class="btn">Cancel</a> 
+            <input type="submit" value="Add this item" class="btn"> 
+            <a href="@routes.AdminController.delete_order(id)" class="btn">Cancel</a> 
         </div>       
     }    
-    
-    @if(orderContentForm.hasGlobalErrors) {
-    <p class="error">
-        @orderContentForm.globalError.message
-    </p>
-}
 }

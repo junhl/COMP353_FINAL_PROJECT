@@ -1,31 +1,31 @@
 
 # --- !Ups
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('0', 125000, 1, null, null, null, null, null);
+values('0', 125000, 1, 0, 0, 0, 0, 0);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('0', 78500, 1, null, null, null, null, null);
+values('0', 78500, 1, 0, 0, 0, 0, 0);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('0', 0, 0, null, null, null, null, null);
+values('0', 0, 0, 0, 0, 0, 0, 0);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('1', null, null, 27.25, 1.5, 5, 1.25, 36);
+values('1', 0, 0, 27.25, 1.5, 5, 1.25, 36);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('1', null, null, 24.50, 1.5, 5, 1.25, 36);
+values('1', 0, 0, 24.50, 1.5, 5, 1.25, 36);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('0', 40000, 0, null, null, null, null, null);
+values('0', 40000, 0, 0, 0, 0, 0, 0);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('0', 40000, 5, null, null, null, null, null);
+values('0', 40000, 5, 0, 0, 0, 0, 0);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('1', null, null, 16, 1.25, 8, 1.5, 37.5);
+values('1', 0, 0, 16, 1.25, 8, 1.5, 37.5);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('1', null, null, 16, 1.25, 8, 1.5, 37.5);
+values('1', 0, 0, 16, 1.25, 8, 1.5, 37.5);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('1', null, null, 16, 1.25, 8, 1.5, 37.5);
+values('1', 0, 0, 16, 1.25, 8, 1.5, 37.5);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('1', null, null, 16, 1.25, 8, 1.5, 37.5);
+values('1', 0, 0, 16, 1.25, 8, 1.5, 37.5);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('1', null, null, 16, 1.25, 8, 1.5, 37.5);
+values('1', 0, 0, 16, 1.25, 8, 1.5, 37.5);
 insert into pay (salary_or_hourly, annual_salary, annual_salary_increase_percentage, hourly_base, hourly_increase, hourly_increase_experience_years, overtime_rate, maximum_weekly_hours)
-values('0', 98000, 1, null, null, null, null, null);
+values('0', 98000, 1, 0, 0, 0, 0, 0);
 
 insert into unit (name) values ('PALLIATIVE CARE UNIT'); --1
 insert into unit (name) values ('CHILDREN''S UNIT'); -- 2
@@ -52,13 +52,13 @@ insert into employee(name, unit_id, role_id) values ('A NURSE SUPERVISOR', 1, 4)
 insert into employee(name, unit_id, role_id) values ('A NURSE', 1, 5);
 insert into employee(name, unit_id, role_id) values ('A INTERN', 1, 6);
 
-insert into service (name,unit_id) values ('TEST SERVICE 1 UNIT 1', 1);
-insert into service (name,unit_id) values ('TEST SERVICE 2 UNIT 1', 1);
+insert into service (name,unit_id, cost) values ('TEST SERVICE 1 UNIT 1', 1, 10);
+insert into service (name,unit_id, cost) values ('TEST SERVICE 2 UNIT 1', 1, 10);
 
-insert into service (name,unit_id) values ('TEST SERVICE 1 UNIT 2', 2);
+insert into service (name,unit_id, cost) values ('TEST SERVICE 1 UNIT 2', 2, 10);
 
-insert into service (name,unit_id) values ('TEST SERVICE 1 UNIT 3', 3);
-insert into service (name,unit_id) values ('TEST SERVICE 2 UNIT 3', 3);
+insert into service (name,unit_id, cost) values ('TEST SERVICE 1 UNIT 3', 3, 10);
+insert into service (name,unit_id, cost) values ('TEST SERVICE 2 UNIT 3', 3, 10);
 
 insert into supervision (supervised_id, supervisor_id) values (6, 3);
 insert into supervision (supervised_id, supervisor_id) values (5, 3);
@@ -107,8 +107,8 @@ insert into operating_rooms(name) values ('OPERATING ROOM C');
 insert into operating_rooms(name) values ('OPERATING ROOM D');
 insert into operating_rooms(name) values ('OPERATING ROOM E');
 
-insert into task(name, employee_id, service_id, shift_id, canceled, patient_treatment_history_id) values ('LEG SURGERY', 3, 1, null, '0', 1);
-insert into task(name, employee_id, service_id, shift_id, canceled, patient_treatment_history_id) values ('EAR SURGERY', 3, 1, null, '0', 2);
+insert into task(name, employee_id, service_id, shift_id, canceled, patient_treatment_history_id, date) values ('LEG SURGERY', 3, 1, null, '0', 1, '2015-08-19');
+insert into task(name, employee_id, service_id, shift_id, canceled, patient_treatment_history_id, date) values ('EAR SURGERY', 3, 1, null, '0', 2, '2015-08-19');
 
 
 insert into supply_type(name) values ('MEDICAL');
@@ -131,26 +131,24 @@ insert into vendor(name) values ('MEDICAL VENDOR');
 insert into vendor(name) values ('NON-MEDICAL VENDOR VENDOR');
 insert into vendor(name) values ('NUTRITIONAL VENDOR');
 
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(1,1,'MEDICATION TYLENOL',0,0);
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(2,1,'CUTTING TOOLS',0,0);
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(3,1,'DEFIBS',0,0);
-
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(4,2,'STATIONARY',0,0);
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(5,2,'PATIENT ROBES',0,0);
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(6,2,'CLEANING BLEACH',0,0);
-
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(7,3,'FRESH FRUIT',0,0);
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(8,3,'CANNED BEANS',0,0);
-insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) values
-(9,3,'FORKS',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (1,1,'MEDICATION TYLENOL',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (2,1,'CUTTING TOOLS',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (3,1,'DEFIBS',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (4,2,'STATIONARY',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (5,2,'PATIENT ROBES',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (6,2,'CLEANING BLEACH',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (7,3,'FRESH FRUIT',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (8,3,'CANNED BEANS',0,0);
+insert into supply_specific_type(supply_sub_type_id, vendor_id, name, cost, is_immediate_shipping) 
+	values (9,3,'FORKS',0,0);
 
 insert into storage_location(name, employee_id) values ('STORE ROOM A', 1);
 insert into storage_location(name, employee_id) values ('STORE ROOM B', 1);
@@ -165,4 +163,33 @@ insert into orders(date) values('2015-08-06');
 insert into orders(date) values('2015-08-07');
 
 insert into delivery_service(name, is_immediate_shipping) values ('PUROLATOR', '1');
+insert into delivery_service(name, is_immediate_shipping) values ('FEDEX', '1');
+
+insert into order_content(order_id,quantity,supply_specific_type_id,storage_location_id,delivery_service_id)
+	values (1, 1, 1, 1, 1);
+insert into order_content(order_id,quantity,supply_specific_type_id,storage_location_id,delivery_service_id)
+	values (1, 3, 2, 1, 1);
+insert into order_content(order_id,quantity,supply_specific_type_id,storage_location_id,delivery_service_id)
+	values (2, 2, 3, 1, 1);
+insert into order_content(order_id,quantity,supply_specific_type_id,storage_location_id,delivery_service_id)
+	values (2, 4, 2, 1, 1);
+insert into order_content(order_id,quantity,supply_specific_type_id,storage_location_id,delivery_service_id)
+	values (2, 6, 4, 1, 1);
     
+insert into shift(start_date, end_date, employee_id) values ('2015-08-10 10:00:00','2015-08-10 20:00:00', 4);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-11 10:00:00','2015-08-11 20:00:00', 4);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-12 10:00:00','2015-08-12 20:00:00', 4);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-13 10:00:00','2015-08-13 20:00:00', 4);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-14 10:00:00','2015-08-14 20:00:00', 4);
+
+insert into shift(start_date, end_date, employee_id) values ('2015-08-10 10:00:00','2015-08-10 20:00:00', 5);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-11 10:00:00','2015-08-11 20:00:00', 5);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-12 10:00:00','2015-08-12 20:00:00', 5);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-13 10:00:00','2015-08-13 20:00:00', 5);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-14 10:00:00','2015-08-14 20:00:00', 5);
+
+insert into shift(start_date, end_date, employee_id) values ('2015-08-10 10:00:00','2015-08-10 20:00:00', 6);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-11 10:00:00','2015-08-11 20:00:00', 6);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-12 10:00:00','2015-08-12 20:00:00', 6);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-13 10:00:00','2015-08-13 20:00:00', 6);
+insert into shift(start_date, end_date, employee_id) values ('2015-08-14 10:00:00','2015-08-14 20:00:00', 6);

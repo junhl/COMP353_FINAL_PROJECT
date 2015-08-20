@@ -128,47 +128,122 @@ public class AdminController extends Controller{
              return badRequest(add_order.render(orderForm));
          }
          orderForm.get().save();
-         return add_order_content(orderForm.get().id);    
+         return edit_order_content(orderForm.get().id, 0, "id", "asc", "");  
     }
-    public static Result edit_order(long id) {
-        return TODO;
+    public static Result delete_order(long id){
+    	Orders.find.byId(id).delete();
+    	flash("success","Computer has been deleted");
+    	return order_index();
     }
     
     //////////SUPPLY ORDER CONTENTS////////////
-    public static Result order_content_index(Long id){	
-    	return order_content(0, "id", "asc", Long.toString(id));
+    public static Result order_content_index(Long orderID){	
+    	return display_order_content(orderID, 0, "id", "asc","");
     }
-    
-    public static Result order_content(int page, String sortBy, String orderBy, String filter){
+    public static Result display_order_content(long orderID, int page, String sortBy, String orderBy, String filter){
     	return ok(
-    			order_content.render(OrderContent.page(page,10,sortBy,orderBy,filter),sortBy,orderBy,filter)
+    			display_order_content.render(orderID,OrderContent.page(page, 10, sortBy, orderBy, filter),sortBy,orderBy,filter)
     			);
     }
-    public static Result add_order_content(Long id) {
-    	Form<OrderContent> orderContentForm = form (OrderContent.class);
-   	 	return ok(
-   	 			add_order_content.render(id, orderContentForm)
-   	 			);
+    public static Result add_order_content(Long orderID) {
+    	Form<OrderContent> contentForm = form(OrderContent.class);
+    	return ok(
+    			add_order_content.render(orderID, contentForm)
+    			);
     }
-    public static Result save_order_content(){	
-    	Form<OrderContent> orderContentForm = form (OrderContent.class).bindFromRequest();
-    	if(orderContentForm.hasErrors()){
-    		
-    		return TODO;
-    	}
-    	orderContentForm.get().save();
+    public static Result edit_order_content(Long orderID, int page, String sortBy, String orderBy, String filter){
+    	return ok(
+    			edit_order_content.render(orderID,OrderContent.page(page, 10, sortBy, orderBy, filter),sortBy,orderBy,filter)
+    			);
+    }
+    public static Result save_order_content(Long orderID){	
+    	Form<OrderContent> contentForm = form(OrderContent.class).bindFromRequest();
+    	if(contentForm.hasErrors()) {
+            return badRequest(add_order_content.render(orderID,contentForm));
+        }
+        contentForm.get().save();
+        return edit_order_content(orderID, 0, "id", "asc", ""); 
+    }    
+    public static Result delete_order_content(Long orderID){
+    	OrderContent.find.byId(orderID).delete();
+    	flash("success","Computer has been deleted");
+    	return delete_order(orderID);
+    }    
+    public static Result finish_edit(){
     	return order_index();
+    }
+    
+    
+    //////////OPERATING ROOM////////////
+    public static Result operating_room_index() {
+        return ok( //ok is to display
+        		operatingroom.render(OperatingRooms.page(0, 100, "id", "id", ""), "", "", "")
+                );
+    }
+    
+    public static Result operating_room_schedules(long id) {
+        return ok( //ok is to display
+        		operatingroom_schedules.render(id, OperatingRoomSchedule.page(0, 100, "id", "id", Long.toString(id)), "", "", "")
+                );
+    }
+    
+    public static Result schedule_new(long id) {
+        Form<OperatingRoomSchedule> form = form(OperatingRoomSchedule.class);
+        return ok(
+            create_operating_room_schedule.render(id, form)
+        );
+    }
+    
+    public static Result save_schedule(long id) {
+        Form<OperatingRoomSchedule> scheduleForm = form(OperatingRoomSchedule.class).bindFromRequest();
+        if(scheduleForm.hasErrors()) {
+            return badRequest(create_operating_room_schedule.render(id,scheduleForm));
+        }
+        scheduleForm.get().save();
+        return operating_room_schedules(id);
+    }
+    
+    //////////EMPLOYEE////////////
+    
+    public static Result employee_index() {
+        return TODO;
     }    
     
-    public static Result schedules() {
-        return TODO;
+    public static Result edit_employee(long id) {
+        Form<Employee> employeeForm = form(Employee.class).bindFromRequest();
+        if(employeeForm.hasErrors()) {
+            return TODO;
+        }
+        employeeForm.get().save();
+        return operating_room_index();
     }
     
-    public static Result report_unit_service() {
+    public static Result employee_schedule(long id) {
         return TODO;
+    }   
+    
+    public static Result add_employee_schedule(long id) {
+        Form<Employee> form = form(Employee.class);
+        return ok(
+            create_operating_room_schedule.render(id, form)
+        );
+    }  
+    
+    public static Result save_employee_schedule(long id) {
+        Form<Employee> employeeForm = form(Employee.class).bindFromRequest();
+        if(employeeForm.hasErrors()) {
+            return TODO;
+        }
+        employeeForm.get().save();
+        return employee_index();
+    }  
+    
+    //////////TASKS////////////
+    public static Result task_index(){
+    	return TODO;
     }
     
-    public static Result report_doctor_service() {
-        return TODO;
+    public static Result add_task(){
+    	return TODO;
     }
 }

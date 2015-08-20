@@ -1,7 +1,32 @@
 @()
 
 @main("Welcome to Play") {
-	<a href="@routes.AdminController.service_index()" class="btn">Service</a> 
-	<a href="@routes.AdminController.supply_index()" class="btn">Supplies</a> 
-	<a href="@routes.AdminController.order_index()" class="btn">Orders</a> 
+        <table class="computers zebra-striped">
+        
+            <thead>
+                <tr>
+                     <td>Options</td>           
+                </tr>
+            </thead>
+            
+            <tbody>
+                    <tr>
+                        <td><a href="@routes.AdminController.service_index()" >Service</a> </td>               
+                    </tr>
+				     <tr>
+                        <td><a href="@routes.AdminController.supply_index()">Supplies</a> </td>               
+                    </tr>
+
+				     <tr>
+                        <td>	<a href="@routes.AdminController.order_index()">Orders</a> </td>     
+                    </tr>
+				     <tr>						
+                        <td>	<a href="@routes.AdminController.order_index()">Employees</a> </td>          
+                    </tr>					
+				    <tr>                        
+				     	<td>	<a href="@routes.AdminController.operating_room_index">Operating Rooms</a> </td>     
+                    </tr>
+            </tbody>            
+        </table> 
+
 }
