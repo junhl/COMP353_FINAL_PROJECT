@@ -21,7 +21,7 @@ public class NurseShiftSupervisorController extends Controller{
 
     //------------------------------- Nurses -------------------------------\\
     public static Result nurse_index() {
-    	return nurse(0, "name", "asc", (long) 4); 
+    	return nurse(0, "name", "asc", Long.parseLong(session("employee_id"))); 
 
     }
 	
