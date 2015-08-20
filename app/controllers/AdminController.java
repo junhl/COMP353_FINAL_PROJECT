@@ -173,17 +173,16 @@ public class AdminController extends Controller{
     	return order_index();
     }
     
-    
     //////////OPERATING ROOM////////////
     public static Result operating_room_index() {
         return ok( //ok is to display
-        		operatingroom.render(OperatingRooms.page(0, 100, "id", "id", ""), "", "", "")
+        		operatingroom.render(OperatingRooms.page(0, 100, "id", "asc", ""), "id", "asc", "")
                 );
     }
     
     public static Result operating_room_schedules(long id) {
         return ok( //ok is to display
-        		operatingroom_schedules.render(id, OperatingRoomSchedule.page(0, 100, "id", "id", Long.toString(id)), "", "", "")
+        		operatingroom_schedules.render(id, OperatingRoomSchedule.page(0, 100, "id", "asc", Long.toString(id)), "id", "asc", "")
                 );
     }
     
@@ -204,18 +203,34 @@ public class AdminController extends Controller{
     }
     
     //////////EMPLOYEE////////////
-    
     public static Result employee_index() {
-        return TODO;
+        return ok(
+        		employee.render(Employee.page(0, 100, "id", "asc", ""), "id", "asc", "")
+        		);
     }    
     
     public static Result edit_employee(long id) {
-        Form<Employee> employeeForm = form(Employee.class).bindFromRequest();
-        if(employeeForm.hasErrors()) {
-            return TODO;
-        }
-        employeeForm.get().save();
-        return operating_room_index();
+    	Form<Employee> employeeForm = form(Employee.class).fill(
+    			Employee.find.byId(id)
+                );        
+            return ok(
+                    edit_employee.render(id, employeeForm)
+                );
+    }
+    
+    public static Result fire_his_ass(long id) {
+    	Employee.find.byId(id).delete();
+    	flash("success","Computer has been deleted");
+    	return delete_order(id);
+    }
+    
+    public static Result save_employee(long id){
+    	Form<Employee> employeeForm = form(Employee.class).bindFromRequest();
+    	if(employeeForm.hasErrors()){
+    		return badRequest(edit_employee.render(id, employeeForm));
+    	}
+    	employeeForm.get().save();
+    	return employee_index();
     }
     
     public static Result employee_schedule(long id) {
@@ -223,10 +238,8 @@ public class AdminController extends Controller{
     }   
     
     public static Result add_employee_schedule(long id) {
-        Form<Employee> form = form(Employee.class);
-        return ok(
-            create_operating_room_schedule.render(id, form)
-        );
+        Form<Employee> employeeForm = form(Employee.class);
+        return TODO;
     }  
     
     public static Result save_employee_schedule(long id) {
