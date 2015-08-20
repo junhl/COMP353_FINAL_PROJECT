@@ -29,7 +29,12 @@
                 '_label -> "Treatment History ID",
                 '_showConstraints -> false
             )
-           	
+           	@select(
+                taskForm("shift.id"), 
+                options(Shift.options), 
+                '_label -> "Shift ID",
+                '_showConstraints -> false
+            )
             
         </fieldset>
         
