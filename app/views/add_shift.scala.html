@@ -1,0 +1,22 @@
+@(empID: Long, shiftForm: Form[Shift])
+
+@import helper._
+
+
+@main("Welcome to Play") {
+<h1>Add an order</h1>
+    
+    @form(routes.AdminController.save_shift(empID)) {
+        <fieldset>
+     		@inputText(shiftForm("start_date"), '_label -> "Start")
+     		
+     		@inputText(shiftForm("end_date"), '_label -> "End")
+     		
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Add this shift" class="btn"> 
+            <a href="@routes.AdminController.employee_schedule(empID)" class="btn">Cancel</a> 
+        </div>       
+    }    
+}

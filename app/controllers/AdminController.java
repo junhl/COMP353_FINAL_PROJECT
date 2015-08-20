@@ -234,21 +234,25 @@ public class AdminController extends Controller{
     }
     
     public static Result employee_schedule(long id) {
-        return TODO;
+        return ok(
+        		employee_schedule.render(id, Shift.page(0, 14, "id", "asc", ""), "id", "asc", "")
+        		);
     }   
     
-    public static Result add_employee_schedule(long id) {
-        Form<Employee> employeeForm = form(Employee.class);
-        return TODO;
+    public static Result add_shift(long id) {
+    	Form<Shift> shiftForm = form(Shift.class);
+        return ok(
+        		add_shift.render(id,shiftForm)
+        		);
     }  
     
-    public static Result save_employee_schedule(long id) {
-        Form<Employee> employeeForm = form(Employee.class).bindFromRequest();
-        if(employeeForm.hasErrors()) {
-            return TODO;
+    public static Result save_shift(long id) {
+        Form<Shift> shiftForm = form(Shift.class).bindFromRequest();
+        if(shiftForm.hasErrors()) {
+            return badRequest(add_shift.render(id,shiftForm));
         }
-        employeeForm.get().save();
-        return employee_index();
+        shiftForm.get().save();
+        return employee_schedule(id);
     }  
     
     //////////TASKS////////////

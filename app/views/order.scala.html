@@ -34,15 +34,7 @@
     </div>
     <div id="back">        
         <a class="btn success" id="back" href="@routes.AdminController.index()">Back</a>        
-    </div>
-    @if(currentPage.getTotalRowCount == 0) {
-        
-        <div class="well">
-            <em>Nothing to display</em>
-        </div>
-        
-    } else {
-        
+    </div>        
         <table class="computers zebra-striped">
         
             <thead>
@@ -60,6 +52,5 @@
                     </tr>
                 }
             </tbody>            
-        </table> 
-    }        
+        </table>     
 }
