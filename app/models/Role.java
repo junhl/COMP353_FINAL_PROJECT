@@ -43,4 +43,12 @@ public class Role extends Model{
                 .findPagingList(pageSize)
                 .getPage(page);
     }
+    
+    public static Map<String,String> options() {
+        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
+        for(Role c: Role.find.orderBy("id").findList()) {
+            options.put(c.id.toString(), c.name);
+        }
+        return options;
+    }
 }

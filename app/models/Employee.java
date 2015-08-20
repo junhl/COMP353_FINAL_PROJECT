@@ -31,7 +31,7 @@ public class Employee extends Model{
 	//@Constraints.Required
 	public java.util.Date hire_date;
 	
-    public static Finder<Long,Employee> find = new Finder<Long,Employee>(Long.class, Employee.class); 
+    public static Model.Finder<Long,Employee> find = new Model.Finder<Long,Employee>(Long.class, Employee.class); 
 	
     public static Page<Employee> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 

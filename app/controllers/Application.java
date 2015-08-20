@@ -30,7 +30,7 @@ public class Application extends Controller {
     public static Result return_index() {
 	        Form<Login> employeeForm = form(Login.class).bindFromRequest();
 			if(employeeForm.hasErrors()) {
-				return TODO;
+				return badRequest(index.render("COMP353 FINAL PROJECT", employeeForm));
 			}
 			Login emp = employeeForm.get();
 			long role_id = 0;

@@ -1,0 +1,40 @@
+@(id: Long, employeeForm: Form[Employee])
+
+@import helper._
+    
+    @main("Welcome to Play") {<h1>Edit employee</h1>
+    
+    @form(routes.AdminController.save_employee(id)) {
+        
+        <fieldset>
+        
+            @inputText(employeeForm("name"), '_label -> "Employee name")
+
+            @select(
+                employeeForm("unit.id"), 
+                options(Unit.options), 
+                '_label -> "Unit",
+                '_showConstraints -> false
+            )
+            
+           	@select(
+           		employeeForm("role.id"),
+				options(Role.options),
+				'_label -> "Role",
+				'_showConstraints -> false	
+			)
+			
+     		@inputText(employeeForm("hire_date"), '_label -> "Hire Date")
+     		
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Finish Edit" class="btn">
+            <input type ="submit" href="@routes.AdminController.employee_index()" class="btn" value ="Cancel"/>                  
+        </div>        
+    }    
+    
+    @form(routes.AdminController.fire_his_ass(id), 'class -> "topRight") {
+        <input type="submit" value="Fire his ass" class="btn danger">
+    } 
+}
