@@ -1,0 +1,45 @@
+@(id: Long, supplyForm: Form[SupplySpecificType])
+
+@import helper._
+
+
+    
+    @main("Welcome to Play") {<h1>Add a supply</h1>
+    
+    @form(routes.AdminController.update_supply(id)) {
+        
+        <fieldset>
+        
+            @inputText(supplyForm("name"), '_label -> "supply name")
+			
+			@inputText(supplyForm("cost"), '_label -> "supply cost")
+			
+			@checkbox(field = supplyForm("is_immediate_shipping"))
+			
+            @select(
+                supplyForm("supply_sub_type.id"), 
+                options(SupplySubType.options), 
+                '_label -> "Unit",
+                '_showConstraints -> false
+            )
+            
+            @select(
+            	supplyForm("vendor.id"),
+            	options(Vendor.options),
+            	'_label -> "Vendor",
+            	'_showConstraints -> false
+            )
+            
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Finish Edit" class="btn">
+            <input type ="submit" href="@routes.AdminController.supply_index()" class="btn" value ="Cancel"/>                  
+        </div>        
+    }    
+    
+    @form(routes.AdminController.delete_supply(id), 'class -> "topRight") {
+        <input type="submit" value="Delete" class="btn danger">
+    } 
+}

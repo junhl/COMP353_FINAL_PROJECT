@@ -18,7 +18,7 @@ public class Shift extends Model{
 	
 	@Constraints.Required
 	public Date start_date;
-	
+
 	@Constraints.Required
 	public Date end_date;
 	
@@ -28,12 +28,20 @@ public class Shift extends Model{
 	
     public static Model.Finder<Long,Shift> find = new Model.Finder<Long,Shift>(Long.class, Shift.class);
 
-    public static Page<Shift> page(int page, int pageSize, String sortBy, String order, long filter) {
+    public static Page<Shift> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where()
                 .ilike("employee_id", "%" + filter + "%")
                 .orderBy(sortBy + " " + order)
                 .findPagingList(pageSize)
                 .getPage(page);
+    }
+    
+    public static Map<String,String> options() {
+        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
+        for(Shift c: Shift.find.findList()) {
+            options.put(c.id.toString(), c.id.toString());
+        }
+        return options;
     }
 }

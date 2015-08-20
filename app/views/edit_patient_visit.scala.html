@@ -1,0 +1,37 @@
+@(id: Long, patient_visitForm: Form[PatientVisit])
+
+@import helper._
+
+
+    
+    @main("Welcome to Play") {<h1>Edit a patient visit</h1>
+    
+    @form(routes.DoctorController.update_patient_visit(id)) {
+        
+        <fieldset>
+			@select(
+                patient_visitForm("patient.id"), 
+                options(Patient.find_the_id(id)), 
+                '_label -> "PatientVisitID",
+                '_showConstraints -> false
+            )
+			@select(
+                patient_visitForm("unit.id"), 
+                options(Unit.options), 
+                '_label -> "Unit",
+                '_showConstraints -> false
+            )
+			@inputText(patient_visitForm("date_of_visit"), '_label -> "VisitDate")
+			@inputText(patient_visitForm("date_of_leave"), '_label -> "LeaveDate")
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Finish Edit" class="btn">
+                
+        </div>        
+    }    
+    
+    @form(routes.DoctorController.delete_patient_visit(id), 'class -> "topRight") {
+        <input type="submit" value="Delete" class="btn danger">
+    } 
+}

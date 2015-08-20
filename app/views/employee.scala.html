@@ -19,7 +19,7 @@
     }
     
     // Generate the link
-    routes.AdminController.service(newPage, sortBy, order, currentFilter)
+    routes.AdminController.employee_index()
     
 }
 
@@ -55,10 +55,10 @@
             <tbody>
                 @for(employee <- currentPage.getList) {
                     <tr>
-                        <td>@employee.name</td>
+                        <td><a href="@routes.AdminController.edit_employee(employee.id)">@employee.name</a></td>
                         <td>@employee.unit.name</td>     
                         <td>@employee.role.name</td>   
-                        <td>Schedule</td>               
+                        <td><a href="@routes.AdminController.employee_schedule(employee.id)">Shifts</a></td>               
                     </tr>
                 }
             </tbody>            

@@ -1,0 +1,61 @@
+@(empID: Long, currentPage: com.avaje.ebean.Page[Shift], currentSortBy: String, currentOrder: String, currentFilter: String) 
+
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.AdminController.employee_schedule(empID)
+    
+}
+
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}>
+       <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+@main("Welcome to Play") {
+	<div id="action">        
+        <a class="btn success" id="add" href="@routes.AdminController.add_shift(empID)">Add shift</a>        
+    </div> 
+    <div id="back">        
+        <a class="btn success" id="finish" href="@routes.AdminController.employee_index()">Done</a>        
+    </div>         
+    
+    <table class="computers zebra-striped">  
+        <thead>
+            <tr>
+                @header("employee", "Employee")
+                @header("start_time", "Start Time")
+                @header("end_time", "End Time")
+            </tr>
+        </thead>
+            
+        <tbody>
+            @for(shift <- currentPage.getList){
+            	@if(shift.employee.id == empID){
+            	<tr>
+            		<td>@shift.employee.id</td>
+            		<td>@shift.start_date</td>
+            		<td>@shift.end_date</td>
+            	</tr>
+            	}
+            }
+    	</tbody>            
+    </table>           
+}

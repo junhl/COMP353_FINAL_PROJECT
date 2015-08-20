@@ -7,14 +7,27 @@
     @form(routes.DoctorController.update_task(id)) {
         
         <fieldset>
+        	@inputText(taskForm("name"), '_label -> "Name")
 			@select(
-                taskForm("task.id"), 
-                options(Task.find_the_id(id)), 
-                '_label -> "TaskID",
+                taskForm("service.id"), 
+                options(Service.options), 
+                '_label -> "ServiceID",
                 '_showConstraints -> false
             )
-			@inputText(taskForm("name"), '_label -> "Summary")
-			@inputText(taskForm("canceled"), '_label -> "Cancel")
+			@select(
+                taskForm("employee.id"), 
+                options(Employee.options), 
+                '_label -> "EmployeeID",
+                '_showConstraints -> false
+            )
+			@inputText(taskForm("date"), '_label -> "Date")
+			@checkbox(field = taskForm("canceled"), '_label -> "Cancel")
+           	@select(
+                taskForm("shift.id"), 
+                options(Shift.options), 
+                '_label -> "Shift ID",
+                '_showConstraints -> false
+            )
         </fieldset>
                
     }

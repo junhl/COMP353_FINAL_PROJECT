@@ -52,6 +52,15 @@ GET		/admin/operating_room/schedules/:id				controllers.AdminController.operatin
 GET		/admin/operating_room/schedules/new/:id			controllers.AdminController.schedule_new(id:Long)
 POST	/admin/operating_room/schedules/save/:id		controllers.AdminController.save_schedule(id:Long)
 
+##### EMPLOYEE #####
+GET 	/admin/employee/index							controllers.AdminController.employee_index()
+GET 	/admin/employee/edit/:id						controllers.AdminController.edit_employee(id:Long)
+POST	/admin/employee/save/:id						controllers.AdminController.save_employee(id:Long)
+GET    	/admin/employee/delete/:id    					controllers.AdminController.fire_his_ass(id:Long)
+GET 	/admin/employee/shift/:id						controllers.AdminController.employee_schedule(id:Long)
+GET		/admin/employee/shift/new/:id					controllers.AdminController.add_shift(id:Long)
+POST	/admin/employee/shift/save/:id					controllers.AdminController.save_shift(id:Long)
+	
 ##################### DOCTOR SECTION
 GET     /doctor                        					controllers.DoctorController.index()
 
@@ -96,11 +105,26 @@ POST    /doctor/task/:id/delete       					controllers.DoctorController.delete_t
 
 ##################### NURSE SECTION
 
-GET     /nurse                     					controllers.NurseController.index()
+GET     /nurse                     						controllers.NurseController.index()
 
-##################### NURSE SUPERVISOR SECTIONs
+GET 	/nurse/tasks       controllers.NurseController.task_index()
+GET 	/nurse/tasks       controllers.NurseController.task(id:Int ?= 0, s ?= "name", o ?= "asc", f:Long)
 
-GET     /nurseshiftsupervisor           			controllers.NurseShiftSupervisorController.index()
+
+##################### NURSE SUPERVISOR SECTION
+
+GET     /nurseshiftsupervisor           				controllers.NurseShiftSupervisorController.index()
+
+GET     /nurseshiftsupervisor/nurse_list                controllers.NurseShiftSupervisorController.nurse_index()
+GET		/nurseshiftsupervisor/nurse_list				controllers.NurseShiftSupervisorController.nurse(id:Int ?= 0, s ?= "name", o ?= "asc", f:Long)
+
+GET 	/nurseshiftsupervisor/nurse_list/tasks       controllers.NurseShiftSupervisorController.task_index(f:Long)
+GET 	/nurseshiftsupervisor/nurse_list/tasks       controllers.NurseShiftSupervisorController.task(id:Int ?= 0, s ?= "name", o ?= "asc", f:Long)
+GET		/nurseshiftsupervisor/nurse_list/tasks/param_list/new		controllers.NurseShiftSupervisorController.add_task(history_id:Long, empID:Long)
+POST	/nurseshiftsupervisor/nurse_list/tasks					controllers.NurseShiftSupervisorController.save_task()
+GET		/nurseshiftsupervisor/nurse_list/tasks/:id				controllers.NurseShiftSupervisorController.edit_task(id:Long)
+POST	/nurseshiftsupervisor/nurse_list/tasks/:id				controllers.NurseShiftSupervisorController.update_task(id:Long)
+POST    /nurseshiftsupervisor/nurse_list/tasks/:id/delete       	controllers.NurseShiftSupervisorController.delete_task(id:Long)
 
 ##################### INTERN SECTION
 GET     /internresident         						controllers.InternResidentController.index()

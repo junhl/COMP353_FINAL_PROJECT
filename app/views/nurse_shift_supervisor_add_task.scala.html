@@ -1,0 +1,46 @@
+@(history_id:Long, empID:Long, taskForm: Form[Task])
+
+@import helper._
+
+    @main("Welcome to Play") {
+	<h1>Add a new task</h1>
+    
+    @form(routes.NurseShiftSupervisorController.save_task()) {
+        
+        <fieldset>
+        	@inputText(taskForm("name"), '_label -> "Name")
+			@select(
+                taskForm("service.id"), 
+                options(Service.options), 
+                '_label -> "ServiceID",
+                '_showConstraints -> false
+            )
+			@select(
+                taskForm("employee.id"), 
+                options(Employee.get_employee(empID)), 
+                '_label -> "EmployeeID",
+                '_showConstraints -> false
+            )
+			@inputText(taskForm("date"), '_label -> "Date")
+			@checkbox(field = taskForm("canceled"), '_label -> "Cancel")
+			@select(
+                taskForm("patient_treatment_history.id"), 
+                options(PatientTreatmentHistory.find_the_id(history_id)), 
+                '_label -> "Treatment History ID",
+                '_showConstraints -> false
+            )
+           	@select(
+                taskForm("shift.id"), 
+                options(Shift.options), 
+                '_label -> "Shift ID",
+                '_showConstraints -> false
+            )
+            
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Create a new patient visit" class="btn"> 
+        </div>
+        
+    }    
+}

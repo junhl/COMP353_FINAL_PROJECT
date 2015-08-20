@@ -19,8 +19,6 @@ public class OperatingRooms extends Model{
 	
 	@Constraints.Required
 	public String name;
-
-
 	
     public static Finder<Long,OperatingRooms> find = new Finder<Long,OperatingRooms>(Long.class, OperatingRooms.class); 
 	

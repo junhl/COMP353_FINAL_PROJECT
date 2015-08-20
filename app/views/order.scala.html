@@ -34,15 +34,7 @@
     </div>
     <div id="back">        
         <a class="btn success" id="back" href="@routes.AdminController.index()">Back</a>        
-    </div>
-    @if(currentPage.getTotalRowCount == 0) {
-        
-        <div class="well">
-            <em>Nothing to display</em>
-        </div>
-        
-    } else {
-        
+    </div>        
         <table class="computers zebra-striped">
         
             <thead>
@@ -56,10 +48,9 @@
                 @for(order <- currentPage.getList) {
                     <tr>
                         <td><a href="@routes.AdminController.order_content_index(order.id)">@order.id</a></td>
-                        <td>@order.date</td>                      
+                        <td>@order.date.getMonth()-@order.date.getDate()</td>                      
                     </tr>
                 }
             </tbody>            
-        </table> 
-    }        
+        </table>     
 }

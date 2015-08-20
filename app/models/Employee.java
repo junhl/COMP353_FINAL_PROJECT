@@ -31,7 +31,7 @@ public class Employee extends Model{
 	//@Constraints.Required
 	public java.util.Date hire_date;
 	
-    public static Finder<Long,Employee> find = new Finder<Long,Employee>(Long.class, Employee.class); 
+    public static Model.Finder<Long,Employee> find = new Model.Finder<Long,Employee>(Long.class, Employee.class); 
 	
     public static Page<Employee> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
@@ -57,6 +57,13 @@ public class Employee extends Model{
         LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
         for(Employee c: Employee.find.findList()) {
             options.put(c.id.toString(), c.id.toString());
+        }
+        return options;
+    }
+	public static Map<String,String> get_employee(long id) {
+        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
+        for(Employee c: Employee.find.where().ilike("id", Long.toString(id)).orderBy("name").findList()) {
+            options.put(c.id.toString(), c.name);
         }
         return options;
     }

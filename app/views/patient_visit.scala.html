@@ -1,0 +1,72 @@
+@(currentPage: com.avaje.ebean.Page[PatientVisit], currentSortBy: String, currentOrder: String, currentFilter: Long) 
+
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.DoctorController.patient_visit(newPage, sortBy, order, currentFilter)
+    
+}
+
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") {"headerSortDown"} else {"headerSortUp"}}>
+       <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+
+    @main("Welcome to Play") {<div id="actions">        
+          
+    </div>
+    
+    @if(currentPage.getTotalRowCount == 0) {
+        
+        <div class="well">
+            <em>Nothing to display</em>
+        </div>
+        
+    } else {
+        
+        <table class="computers zebra-striped">
+        
+            <thead>
+                <tr>
+                    @header("id", "PatientVisitID")
+					@header("patient.id", "PatientName")
+                    @header("unit.id", "UnitID")
+					@header("date_of_visit", "VisitDate")
+					@header("date_of_leave","LeaveDate")
+					@header("seeHistory", "See treatment history")
+                </tr>
+            </thead>
+            
+            <tbody>
+                @for(patient_visit <- currentPage.getList) {
+                    <tr>
+					    <td><a href="@routes.DoctorController.edit_patient_visit(patient_visit.id)">@patient_visit.id</a></td>
+                        <td><a href="@routes.DoctorController.edit_patient(patient_visit.patient.id)">@patient_visit.patient.name</a></td>
+                        <td>@patient_visit.unit.id</td>
+						<td>@patient_visit.date_of_visit</td>
+						<td>@patient_visit.date_of_leave</td>
+						<td><a href="@routes.DoctorController.patient_treatment_history(f=patient_visit.id)">See treatment history</td>
+                    </tr>
+                }
+            </tbody>            
+        </table> 
+    }        
+}

@@ -1,0 +1,34 @@
+@(patient_assignmentForm: Form[PatientAssignment])
+
+@import helper._
+
+
+  @main("Welcome to Play") {
+    <h1>Add a patient visit</h1>
+    
+    @form(routes.DoctorController.save_patient_assignment()) {
+        
+        <fieldset>
+			@select(
+                patient_assignmentForm("employee.id"), 
+                options(Employee.options), 
+                '_label -> "EmployeeID",
+                '_showConstraints -> false
+            )
+			<!--@inputText(patient_assignmentForm("employee.id"), '_label -> "EmployeeID")-->
+			<!--@inputText(patient_assignmentForm("patient_visit.id"), '_label -> "PatientVisitID")-->
+			@select(
+                patient_assignmentForm("patient_visit.id"), 
+                options(PatientVisit.options), 
+                '_label -> "PatientVisitID",
+                '_showConstraints -> false
+            )
+            
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Create a new patient assignment" class="btn"> 
+        </div>
+        
+    }    
+}
