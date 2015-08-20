@@ -69,7 +69,7 @@
                         <td>@nurse_task.name</td>  
 						<td>@nurse_task.service.name</td>
 						<td><a href="@routes.NurseShiftSupervisorController.edit_task(nurse_task.id)">@nurse_task.canceled</a></td>
-						<td><a href="@routes.NurseShiftSupervisorController.add_task(nurse_task.patient_treatment_history.id)">@nurse_task.patient_treatment_history.id</a></td>
+						<td><a href="@routes.NurseShiftSupervisorController.add_task(nurse_task.patient_treatment_history.id, nurse_task.employee.id)">@nurse_task.patient_treatment_history.id</a></td>
 						<td>@nurse_task.patient_treatment_history.patient_visit.patient.id</td>
 						<td>@nurse_task.patient_treatment_history.patient_visit.patient.name</td>
 						<td>@nurse_task.shift.start_date</td>

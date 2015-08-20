@@ -10,7 +10,7 @@
         <fieldset>
         	@select(
                 contentForm("order.id"), 
-                options(Orders.options), 
+                options(Orders.get_order(id)), 
                 '_label -> "Order ID",
                 '_showConstraints -> false
             )

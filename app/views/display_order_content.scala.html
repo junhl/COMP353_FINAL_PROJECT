@@ -35,7 +35,6 @@
 		<thead>
         	<tr>
             	@header("order", "Order Number")
-                @header("id", "Content ID")
                 @header("quantity", "Quantity")
                 @header("supplyTyple", "Supply Specific Type")
                 @header("storage", "Storage Location")
@@ -48,7 +47,6 @@
 	        	@if(orderContent.order.id==id){
 	            	<tr>
 	            		<td>@orderContent.order.id</td>
-	                	<td>@orderContent.id</td>
 	                	<td>@orderContent.quantity</td>
 	                	<td>@orderContent.supply_specific_type.name</td>
 	                	<td>@orderContent.storage_location.name</td>

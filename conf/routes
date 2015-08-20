@@ -120,7 +120,7 @@ GET		/nurseshiftsupervisor/nurse_list				controllers.NurseShiftSupervisorControl
 
 GET 	/nurseshiftsupervisor/nurse_list/tasks       controllers.NurseShiftSupervisorController.task_index(f:Long)
 GET 	/nurseshiftsupervisor/nurse_list/tasks       controllers.NurseShiftSupervisorController.task(id:Int ?= 0, s ?= "name", o ?= "asc", f:Long)
-GET		/nurseshiftsupervisor/nurse_list/tasks/new				controllers.NurseShiftSupervisorController.add_task(history_id:Long)
+GET		/nurseshiftsupervisor/nurse_list/tasks/param_list/new		controllers.NurseShiftSupervisorController.add_task(history_id:Long, empID:Long)
 POST	/nurseshiftsupervisor/nurse_list/tasks					controllers.NurseShiftSupervisorController.save_task()
 GET		/nurseshiftsupervisor/nurse_list/tasks/:id				controllers.NurseShiftSupervisorController.edit_task(id:Long)
 POST	/nurseshiftsupervisor/nurse_list/tasks/:id				controllers.NurseShiftSupervisorController.update_task(id:Long)
