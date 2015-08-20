@@ -254,13 +254,5 @@ public class AdminController extends Controller{
         shiftForm.get().save();
         return employee_schedule(id);
     }  
-    
-    //////////TASKS////////////
-    public static Result task_index(){
-    	return TODO;
-    }
-    
-    public static Result add_task(){
-    	return TODO;
-    }
+
 }

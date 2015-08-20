@@ -44,10 +44,10 @@ public class NurseShiftSupervisorController extends Controller{
 				);
     }
 
-	public static Result add_task(Long history_id){
+	public static Result add_task(Long history_id, Long empID){
         Form<Task> taskForm = form(Task.class);
         return ok(
-            nurse_shift_supervisor_add_task.render(history_id, taskForm)
+            nurse_shift_supervisor_add_task.render(history_id, empID, taskForm)
         );
     }
 	
@@ -55,7 +55,7 @@ public class NurseShiftSupervisorController extends Controller{
         Form<Task> taskForm = form(Task.class).bindFromRequest();
 		
         taskForm.get().save();
-        return nurse_index();
+        return task_index(taskForm.get().employee.id);
     }
 	
 	public static Result edit_task(long id){ // this id is taskID to edit

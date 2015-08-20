@@ -48,7 +48,7 @@
                 @for(order <- currentPage.getList) {
                     <tr>
                         <td><a href="@routes.AdminController.order_content_index(order.id)">@order.id</a></td>
-                        <td>@order.date</td>                      
+                        <td>@order.date.getMonth()-@order.date.getDate()</td>                      
                     </tr>
                 }
             </tbody>            

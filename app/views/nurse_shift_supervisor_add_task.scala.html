@@ -1,4 +1,4 @@
-@(history_id:Long, taskForm: Form[Task])
+@(history_id:Long, empID:Long, taskForm: Form[Task])
 
 @import helper._
 
@@ -17,7 +17,7 @@
             )
 			@select(
                 taskForm("employee.id"), 
-                options(Employee.options), 
+                options(Employee.get_employee(empID)), 
                 '_label -> "EmployeeID",
                 '_showConstraints -> false
             )

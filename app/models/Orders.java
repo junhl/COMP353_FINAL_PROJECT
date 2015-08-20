@@ -35,4 +35,11 @@ public class Orders extends Model{
         }
         return options;
     }   
+    public static Map<String,String> get_order(long id) {
+        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
+        for(Employee c: Employee.find.where().ilike("id", Long.toString(id)).orderBy("name").findList()) {
+            options.put(c.id.toString(), c.id.toString());
+        }
+        return options;
+    }
 }
